@@ -3,6 +3,7 @@ import Login from './Pages/Login';
 import { HashRouter, Route, Routes } from "react-router-dom";
 import Dashboard from './Pages/Dashboard';
 import Navbar from './Components/Navbar';
+import Error404 from './Pages/Error404';
 
 function App() {
   return (
