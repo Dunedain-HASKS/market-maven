@@ -15,6 +15,7 @@ const News = () => {
               marginTop: "30px",
               boxShadow: "5px 10px 5px lightgrey",
             }}
+            className="compcard"
           >
             <CardHeader title={item.headline} />
             <div key={index}>
