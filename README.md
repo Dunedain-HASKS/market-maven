@@ -1,4 +1,4 @@
-# market-maven
+# Market-Maven
 
 # Mastering the Markets with Market Maven
 
