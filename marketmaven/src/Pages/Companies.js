@@ -1,13 +1,14 @@
-import data from "../data/companies.json";
+import data from "../Data/companies.json";
 import imgs from "../Assets/complogo.js";
+import Button from "@mui/material/Button";
 
 const Companies = () => {
   return (
-    <>
-      <div className="justify-content-start row row-cols-1 bg-dark row-cols-md-3 g-1 m-0 p-0">
+    <div className="container-fluid mt-2">
+      <div className="justify-content-start row row-cols-1 bg-light row-cols-md-3 g-1 p-2">
         {data.companies.map((comp, index) => (
-          <div className="col" key={index}>
-            <div className="card compcard w-100 h-100 bg-blur text-start bg-dark text-white m-2 p-5">
+          <div className="col" key={index} style={{ marginBottom: "25px"}}>
+            <div className="card compcard bg-blur text-start bg-light m-2 p-5" style={{width: "500px", height: "400px"}}>
               {/* <img
                 src={comp.image}
                 className="card-img-top w-100"
@@ -32,15 +33,17 @@ const Companies = () => {
                   Description: <p>{comp.description.substring(0, 350)}...</p>
                 </h6> */}
 
-                <a className="btn btn-info" href={comp.weburl} target="_blank">
+                {/* <a className="btn btn-primary" href={comp.weburl} target="_blank">
                   More
-                </a>
+                </a> */}
+                <Button size="medium" variant="contained" style={{marginTop: "60px", color: "white", fontFamily: "Montserrat"}}>More Info</Button>
+
               </div>
             </div>
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
