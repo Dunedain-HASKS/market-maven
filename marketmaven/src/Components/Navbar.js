@@ -20,7 +20,7 @@ const pages1 = ["Dashboard"];
 const pages2 = ["Market"];
 const pages3 = ["Companies"];
 const pages4 = ["News"];
-const settings = ["Profile", "Logout"];
+// const settings = ["Profile", "Logout"];
 const setting1 = ["Profile"];
 const setting2 = ["Logout"];
 
