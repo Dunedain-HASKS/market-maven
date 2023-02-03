@@ -1,22 +1,26 @@
-import './App.css';
-import Login from './Pages/Login';
+import "./App.css";
+import Login from "./Pages/Login";
 import { HashRouter, Route, Routes } from "react-router-dom";
-import Dashboard from './Pages/Dashboard';
-import Navbar from './Components/Navbar';
-import {Error404} from './Pages/Error404';
+import DashBoard from "./Pages/dashboard/DashBoard";
+import Navbar from "./Components/Navbar";
+import { Error404 } from "./Pages/Error404";
+import Profile from "./Pages/Profile";
+import Companies from "./Pages/Companies";
 
 function App() {
   return (
     <>
-    <HashRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard/>} />
-        <Route path="*" element={<Error404 />} />
-      </Routes>
-    </HashRouter>
-  </>
+      <HashRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/dashboard" element={<DashBoard />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/companies" element={<Companies />} />
+          <Route path="*" element={<Error404 />} />
+        </Routes>
+      </HashRouter>
+    </>
   );
 }
 
