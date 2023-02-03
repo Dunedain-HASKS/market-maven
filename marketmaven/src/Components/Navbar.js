@@ -17,8 +17,9 @@ import { Link } from "react-router-dom";
 
 // const pages = ["Products", "Pricing", "Blog", "Companies"];
 const pages1 = ["Dashboard"];
-// const pages2 = ["Profile"];
+const pages2 = ["Market"];
 const pages3 = ["Companies"];
+const pages4 = ["News"];
 const settings = ["Profile", "Logout"];
 const setting1 = ["Profile"];
 const setting2 = ["Logout"];
@@ -105,12 +106,12 @@ export default function Navbar() {
                   </MenuItem>
                 </Link>
               ))}
-              {/* {pages2.map((page) => (
-                <Link to='/profile' style={{textDecoration:"none", color:"gray"}}>
+              {pages2.map((page) => (
+                <Link to='/market' style={{textDecoration:"none", color:"black"}}>
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem></Link>
-              ))} */}
+              ))}
               {pages3.map((page) => (
                 <Link
                   to="/companies"
@@ -171,15 +172,25 @@ export default function Navbar() {
                 </MenuItem>
               </Link>
             ))}
-            {/* {pages2.map((page) => (
-                <Link to='/profile' style={{textDecoration:"none", color:"white"}}>
+            {pages2.map((page) => (
+                <Link to='/market' style={{textDecoration:"none", color:"white"}}>
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem></Link>
-              ))} */}
+              ))}
             {pages3.map((page) => (
               <Link
                 to="/companies"
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page}</Typography>
+                </MenuItem>
+              </Link>
+            ))}
+            {pages4.map((page) => (
+              <Link
+                to="/news"
                 style={{ textDecoration: "none", color: "white" }}
               >
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
