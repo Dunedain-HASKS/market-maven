@@ -65,7 +65,7 @@ export default function Login() {
               // html input attribute
               name="email"
               type="email"
-              placeholder="johndoe@email.com"
+              placeholder="walterwhite@gmail.com"
             />
           </FormControl>
           <FormControl>
