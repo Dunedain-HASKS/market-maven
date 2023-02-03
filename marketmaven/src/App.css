@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.error404 {
+  background-color: #000000;
+  background-image: url("./Assets/Error404.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  color: #ffffff;
+}
