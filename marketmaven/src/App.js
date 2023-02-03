@@ -18,6 +18,7 @@ function App() {
           <Route path="/dashboard" element={<DashBoard />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/companies" element={<Companies/>} />
+          <Route path="/signup" element={<SignUp/>}/>
           <Route path="*" element={<Error404 />} />
         </Routes>
       </HashRouter>
