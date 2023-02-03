@@ -5,6 +5,7 @@ import DashBoard from "./Pages/dashboard/DashBoard";
 import Navbar from "./Components/Navbar";
 import { Error404 } from "./Pages/Error404";
 import Profile from "./Pages/Profile";
+import SignUp from "./Pages/SignUp";
 import Companies from "./Pages/Companies";
 
 function App() {
@@ -16,7 +17,6 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/dashboard" element={<DashBoard />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/companies" element={<Companies />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
       </HashRouter>
