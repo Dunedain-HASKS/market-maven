@@ -13,11 +13,15 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Dashboard from "../Pages/dashboard/DashBoard";
 import Companies from "../Pages/Companies";
 // import Companies from "./Pages/Companies";
 
 const pages = ["Products", "Pricing", "Blog", "Companies"];
+const pages1 = ["Dashboard"];
+const pages2 = ["Profile"];
+const pages3 = ["Companies"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 export default function Navbar() {
@@ -92,12 +96,25 @@ export default function Navbar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {/* {pages.map((page) => (
+              {pages1.map((page) => (
+                <Link to='/dashboard' style={{textDecoration:"none", color:"gray"}}>
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))} */}
-              <MenuItem onClick={navigate("/dashboard")}>
+                </MenuItem></Link>
+              ))}
+              {pages2.map((page) => (
+                <Link to='/profile' style={{textDecoration:"none", color:"gray"}}>
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page}</Typography>
+                </MenuItem></Link>
+              ))}
+              {pages3.map((page) => (
+                <Link to='/companies' style={{textDecoration:"none", color:"gray"}}>
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page}</Typography>
+                </MenuItem></Link>
+              ))}
+              {/* <MenuItem onClick={navigate("/dashboard")}>
                 <Typography textAlign="center">Dashboard</Typography>
               </MenuItem>
               <MenuItem onClick={navigate("/profile")}>
@@ -105,7 +122,7 @@ export default function Navbar() {
               </MenuItem>
               <MenuItem onClick={navigate("/company")}>
                 <Typography textAlign="center">Companies</Typography>
-              </MenuItem>
+              </MenuItem> */}
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
@@ -128,7 +145,7 @@ export default function Navbar() {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
+            {/* {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
@@ -136,7 +153,25 @@ export default function Navbar() {
               >
                 {page}
               </Button>
-            ))}
+            ))} */}
+            {pages1.map((page) => (
+                <Link to='/dashboard' style={{textDecoration:"none", color:"white"}}>
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page}</Typography>
+                </MenuItem></Link>
+              ))}
+              {pages2.map((page) => (
+                <Link to='/profile' style={{textDecoration:"none", color:"white"}}>
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page}</Typography>
+                </MenuItem></Link>
+              ))}
+              {pages3.map((page) => (
+                <Link to='/companies' style={{textDecoration:"none", color:"white"}}>
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page}</Typography>
+                </MenuItem></Link>
+              ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
