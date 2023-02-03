@@ -1,4 +1,4 @@
-import data from "../data/companies.json";
+import data from "../Data/companies.json";
 import imgs from "../Assets/complogo.js";
 
 const Companies = () => {
