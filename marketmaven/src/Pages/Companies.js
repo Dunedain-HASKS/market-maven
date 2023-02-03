@@ -7,8 +7,8 @@ const Companies = () => {
     <div className="container-fluid mt-2">
       <div className="justify-content-start row row-cols-1 bg-light row-cols-md-3 g-1 p-2">
         {data.companies.map((comp, index) => (
-          <div className="col" key={index} style={{ marginBottom: "25px"}}>
-            <div className="card compcard bg-blur text-start bg-light m-2 p-5" style={{width: "500px", height: "400px"}}>
+          <div className="col" key={index} style={{ marginBottom: "25px" }}>
+            <div className="card compcard bg-blur text-start bg-light m-2 p-5">
               {/* <img
                 src={comp.image}
                 className="card-img-top w-100"
@@ -16,15 +16,19 @@ const Companies = () => {
                 alt={comp.name}
               /> */}
               <div className="card-body">
-                <img src={imgs[comp.name]} width="50px" height="50px" />
+                <img src={imgs[comp.name]} width="130px" height="100px" />
                 <h5 className="card-title display-6">{comp.name}</h5>
                 {/* <h6 className="card-text display-6">Country: {comp.country}</h6> */}
                 {/* <h6 className="card-text">Ipo release: {comp.ipo}</h6> */}
-                <h5 className=" compinfo">{comp.sector}</h5>
+                <h5 className=" compinfo" style={{ color: "green" }}>
+                  {comp.sector}
+                </h5>
                 {/* <h6 className="card-text">
                   Company subsector: {comp.subsector}
                 </h6> */}
-                <h5 className="comptick rounded-3">${comp.ticker}</h5>
+                <h5 className="comptick rounded-3" style={{ color: "purple" }}>
+                  ${comp.ticker}
+                </h5>
 
                 {/* <h6
                   className="card-text"
@@ -36,8 +40,17 @@ const Companies = () => {
                 {/* <a className="btn btn-primary" href={comp.weburl} target="_blank">
                   More
                 </a> */}
-                <Button size="medium" variant="contained" style={{marginTop: "60px", color: "white", fontFamily: "Montserrat"}}>More Info</Button>
-
+                <Button
+                  size="medium"
+                  variant="contained"
+                  style={{
+                    marginTop: "40px",
+                    color: "white",
+                    fontFamily: "Montserrat",
+                  }}
+                >
+                  More Info
+                </Button>
               </div>
             </div>
           </div>
