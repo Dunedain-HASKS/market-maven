@@ -45,3 +45,11 @@
   height: 100vh;
   color: #ffffff;
 }
+
+.compcard {
+  transition: transform 0.5s;
+}
+
+.compcard:hover {
+  transform: scale(1.1);
+}
