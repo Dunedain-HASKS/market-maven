@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Container } from "@mui/system";
 import CardHeader from "@mui/material/CardHeader";
 import { useParams } from "react-router-dom";
-import data from "../Data/company.json";
+// import data from "../Data/company.json";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import Grid from "@mui/material/Grid";

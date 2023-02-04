@@ -23,7 +23,6 @@ export default function Profile() {
       .then((response) => response.json())
       .then((data) => {
         setData(data.data);
-        console.log(data);
       });
   }, []);
 
@@ -41,7 +40,7 @@ export default function Profile() {
               />
               <p className="text-muted mt-3">Full Stack Cook</p>
               <p className="text-muted mb-4">
-                308 Negra Arroyo Lane, Albuquerque, New Mexico.
+                Funds : {data.funds}
               </p>
               <div className="d-flex justify-content-center mb-2">
                 <Button
@@ -77,10 +76,10 @@ export default function Profile() {
               </div>
               <div className="row mt-3">
                 <div className="col-sm-3">
-                  <p className="card-text">Phone</p>
+                  <p className="card-text">Net worth</p>
                 </div>
                 <div className="col-sm-9">
-                  <p className="card-text text-muted">9662515890</p>
+                  <p className="card-text text-muted">{data.net_worth}</p>
                 </div>
               </div>
               <div className="row mt-3">
