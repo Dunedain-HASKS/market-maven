@@ -31,12 +31,15 @@ const Company = () => {
 
   return (
     <>
-      {loading ? "" : `${JSON.stringify(company)}`}
+      {/* {loading ? "" : `${JSON.stringify(company)}`} */}
       <div className="container py-5">
         <div className="row d-flex">
           <div className="col-lg-4">
             <div className="card mb-4">
-              <div className="card-body text-center">
+              <div
+                className="card-body text-center"
+                style={{ boxShadow: "5px 10px 5px lightGray" }}
+              >
                 <img
                   className="img-fluid rounded-circle"
                   src={company.logo}
@@ -44,22 +47,47 @@ const Company = () => {
                   style={{ width: "250px", height: "250px" }}
                 />
                 <p className="text-muted mt-3">{company.name}</p>
-                <div className="d-flex justify-content-center mb-2">
-                  <Button
-                    variant="contained"
-                    onClick={() => {
-                      navigate("/companies ");
-                    }}
+                <div
+                  className="div"
+                  style={{
+                    display: "flex",
+                    displayDirection: "row",
+                    justifyContent: "center",
+                  }}
+                >
+                  <div
+                    className="d-flex justify-content-center mb-2"
+                    style={{ marginRight: "10px" }}
                   >
-                    Go Back
-                  </Button>{" "}
+                    <Button
+                      variant="contained"
+                      onClick={() => {
+                        navigate("/companies ");
+                      }}
+                    >
+                      Go Back
+                    </Button>{" "}
+                  </div>
+                  <div className="d-flex justify-content-center mb-2">
+                    <Button
+                      variant="contained"
+                      // onClick={() => {
+                      //   navigate("/companies ");
+                      // }}
+                    >
+                      News
+                    </Button>{" "}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           <div className="col-lg-8">
             <div className="card mb-4">
-              <div className="card-body">
+              <div
+                className="card-body"
+                style={{ boxShadow: "5px 10px 5px lightGray" }}
+              >
                 <div className="row">
                   <div className="col-sm-3">
                     <p className="card-text">Country</p>
@@ -91,7 +119,17 @@ const Company = () => {
                     <p className="card-text">Company site</p>
                   </div>
                   <div className="col-sm-9">
-                    <a href="{company.weburl}">{company.weburl}</a>
+                    <a href={company.weburl} target="_blank">
+                      {company.weburl}
+                    </a>
+                  </div>
+                </div>
+                <div className="row mt-3">
+                  <div className="col-sm-3">
+                    <p className="card-text">Financials</p>
+                  </div>
+                  <div className="col-sm-9">
+                    {/* <p>{company.financials.basic.annual.currentRatio.period}</p> */}
                   </div>
                 </div>
               </div>

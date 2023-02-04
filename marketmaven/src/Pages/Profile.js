@@ -25,8 +25,7 @@ export default function Profile() {
         setData(data.data);
         console.log(data);
       });
-
-  },[]);
+  }, []);
 
   return (
     <div className="container py-5">

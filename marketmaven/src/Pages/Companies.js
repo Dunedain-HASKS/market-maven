@@ -25,7 +25,13 @@ const Companies = () => {
         {loading
           ? ""
           : companies.map((comp, index) => (
-              <div className="col" key={index} style={{ marginBottom: "25px" }}>
+              <div
+                className="col"
+                key={index}
+                style={{
+                  marginBottom: "25px",
+                }}
+              >
                 <div
                   className="card compcard bg-blur text-start bg-light m-2 p-5"
                   style={{ minHeight: "500px" }}
