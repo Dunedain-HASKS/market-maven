@@ -127,6 +127,19 @@ export default function Navbar() {
                   <Typography textAlign="center">Companies</Typography>
                 </MenuItem>
               </Link>
+              <Link to="/news" style={{ textDecoration: "none", color: "black" }}>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">News</Typography>
+              </MenuItem>
+            </Link>
+              <Link
+                to="/about-us"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">About Us</Typography>
+                </MenuItem>
+              </Link>
             </Menu>
           </Box>
           {/* <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} /> */}
@@ -191,6 +204,14 @@ export default function Navbar() {
                 <Typography textAlign="center">News</Typography>
               </MenuItem>
             </Link>
+            <Link
+                to="/about-us"
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">About Us</Typography>
+                </MenuItem>
+              </Link>
           </Box>
           {loggedIn ? (
             <Box sx={{ flexGrow: 0 }}>
