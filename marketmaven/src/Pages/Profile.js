@@ -175,7 +175,6 @@ export default function Profile() {
                           className="d-flex justify-content-center mb-1"
                           style={{ marginTop: "30px" }}
                         >
-                          <button className="btn btn-dark">Add Stock</button>
                         </div>
                       </div>
                     </div>
@@ -250,7 +249,6 @@ export default function Profile() {
                           className="d-flex justify-content-center mb-1"
                           style={{ marginTop: "30px" }}
                         >
-                          <button className="btn btn-dark">Add Stock</button>
                         </div>
                       </div>
                     </div>
