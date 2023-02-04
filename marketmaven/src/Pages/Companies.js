@@ -18,7 +18,7 @@ const Companies = () => {
         setLoading(false);
       });
   });
-  
+
   return (
     <div className="container-fluid mt-2">
       <div className="justify-content-start row row-cols-1 bg-light row-cols-md-3 g-1 p-2">
@@ -26,7 +26,10 @@ const Companies = () => {
           ? ""
           : companies.map((comp, index) => (
               <div className="col" key={index} style={{ marginBottom: "25px" }}>
-                <div className="card compcard bg-blur text-start bg-light m-2 p-5">
+                <div
+                  className="card compcard bg-blur text-start bg-light m-2 p-5"
+                  style={{ minHeight: "500px" }}
+                >
                   <div className="card-body">
                     <img src={comp.logo} width="130px" height="100px" />
                     <h5 className="card-title display-6">{comp.name}</h5>
