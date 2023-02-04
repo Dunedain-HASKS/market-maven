@@ -83,7 +83,7 @@ export default function SignUp() {
             sx={{ mt: 1 }}
             onClick={(e) => {
               e.preventDefault();
-              if (ValidateEmail(user.email)) {
+              if (ValidateEmail(user.email) == true) {
                 signUpFunction(user, navigate);
               }
             }}
@@ -104,7 +104,6 @@ export default function SignUp() {
 }
 
 function ValidateEmail(mail) {
-  console.log(mail);
   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
     return true;
   }
@@ -113,28 +112,25 @@ function ValidateEmail(mail) {
 }
 
 async function signUpFunction(user, navigate) {
-  const baseurl = baseUrl
+  const baseurl = baseUrl;
   const res = (
     await axios
-      .post(baseurl +"/user/", {
+      .post(baseurl + "user/", {
         email: user.email,
         password: user.password,
         name: user.name,
-      })
+      }).then((res) => (res.data))
       .catch((err) => {
         alert(err);
       })
-  ).data;
-
-  const data = res.data;
+  );
+  console.log(res);
   if (res.status === 401) {
     alert(res.message);
     return;
   }
-
-  console.log(res);
-  localStorage.setItem("id", data._id);
-  console.log(res.data, localStorage.getItem("id"));
+  
+  localStorage.setItem("id", res.data._id);
 
   if (res.status === 200) {
     navigate("/");
