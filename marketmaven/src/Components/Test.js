@@ -1,128 +1,71 @@
-import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { json, Link } from "react-router-dom";
+import Chart from "../Pages/dashboard/Chart";
 
-import Modal from "react-bootstrap/Modal";
+export default function Test() {
+  const [stocks, setStocks] = useState();
+  const [selected, setSelected] = useState();
+  const [chart, setChart] = useState();
 
-import Switch from "@mui/material/Switch";
+  const baseurl = "https://azathoth-production.up.railway.app/";
+  useEffect(() => {
+    // axios.get(url).then((response) => {
+    //   setStocks(response.data);
+    //   console.log(stocks);
+    // });
 
+    fetch(baseurl + "stocks", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Something went wrong");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setStocks(data);
+        // console.log(data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
 
-export default function Buy(props) {
-  const [checked, setChecked] = useState(true);
-  const [buyorsell,setBuyOrSell] = useState(true);
-  const handleChange = (event) => {
-    setBuyOrSell(!buyorsell);
-    setChecked(event.target.checked);
-  };
-  const [show, setShow] = useState(false);
+  function select(e) {
+    const c = stocks.data?.find((x) => x._id === e.target.value);
+    console.log(c);
 
-  const [qty, setQty] = useState();
-  const [price, setPrice] = useState(props.stock.current_price);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+    setSelected(c);
+    axios
+      .get(
+        baseurl + '/stocks' + c.id
+      )
+      .then((response) => {
+        setChart(response.data);
+        console.log(chart);
+      });
+  }
 
   return (
     <>
-      <div className="bg-dark">
-        <button
-          onClick={handleShow}
-          className="block mx-auto m-2 shadow bg-purple-500 hover:bg-purple-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-        >
-          Buy
-        </button>
-
-        <Modal
-          show={show}
-          onHide={handleClose}
-          backdrop="static"
-          keyboard={false}
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>
-              {(buyorsell)? "Buy" : "Sell"}
-              <Switch
-                checked={checked}
-                onChange={handleChange}
-                inputProps={{ "aria-label": "controlled" }}
-              />
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setQty("");
-                setPrice("");
-                //   POST req to server for buy / props should be here...
-              }}
-              id="buy"
-              className="w-full max-w-sm"
-            >
-              <div className="md:flex md:items-center mb-6">
-                <div className="md:w-1/3">
-                  <label
-                    className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-                    for="qty"
-                  >
-                    Name : {props.stock.name}
-                  </label>
-                </div>
-                <div className="md:w-1/3">
-                  <label
-                    className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-                    for="qty"
-                  >
-                    Qty.
-                  </label>
-                </div>
-                <div className="md:w-2/3">
-                  <input
-                    className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                    id="qty"
-                    placeholder="01"
-                    type="number"
-                    min="1"
-                    defaultValue={qty}
-                    onChange={(e) => {
-                      setQty(e.target.value);
-                      setPrice(e.target.value * props.stock.current_price);
-                    }}
-                  />
-                  {/* {console.log(props.chart)} */}
-                  <h5>
-                    Price :{" "}
-                    {props.stock ? <p>{props.stock.current_price}</p> : null}
-                  </h5>
-                  <h6>Total Amount : {price}</h6>
-                </div>
-              </div>
-            </form>
-          </Modal.Body>
-          <Modal.Footer>
-            <button
-              className="shadow bg-slate-400 hover:bg-slate-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-              type="button"
-              onClick={handleClose}
-            >
-              Close
-            </button>
-            {(buyorsell) ? <button
-              className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-              form="buy"
-              onClick={handleClose}
-            >
-              Buy
-            </button> : <button
-              className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-              form="Sell"
-              onClick={handleClose}
-            >
-              Sell
-            </button>}
-            
-          </Modal.Footer>
-        </Modal>
-      </div>
+      <h1>Test</h1>
+      <select onChange={select}>
+        {stocks
+          ? stocks.data.map((stock) => {
+              return (
+                <option value={stock._id} key={stock._id}>
+                  {stock.company.name}
+                </option>
+              );
+            })
+          : null}
+      </select>
+      {selected ? <Chart stock={selected}/> : null}
     </>
   );
 }
