@@ -83,23 +83,17 @@ export default function NestedModal(props) {
         aria-describedby="parent-modal-description"
       >
         <Box sx={{ ...style, width: 400 }}>
-          {/* <h2 id="parent-modal-title">Stock Name</h2> */}
           {(buyorsell)? "Buy" : "Sell"}
               <Switch
                 checked={checked}
                 onChange={handleChange}
                 inputProps={{ "aria-label": "controlled" }}
               />
-          {/* <p id="parent-modal-description">
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </p> */}
-
           <form
             onSubmit={(e) => {
               e.preventDefault();
               setQty("");
               setPrice("");
-              //   POST req to server for buy / props should be here...
             }}
             id="buy"
             className="w-full max-w-sm"
@@ -134,7 +128,6 @@ export default function NestedModal(props) {
                     setPrice(e.target.value * props.stock.current_price);
                   }}
                 />
-                {/* {console.log(props.chart)} */}
                 <h5>
                   Price :{" "}
                   {props.stock ? <p>{props.stock.current_price}</p> : null}

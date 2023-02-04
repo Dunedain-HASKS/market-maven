@@ -9,30 +9,6 @@ import Button from '@mui/joy/Button';
 import Link from '@mui/joy/Link';
 import { useState } from 'react';
 import axios from 'axios';
-// function ModeToggle() {
-//   const { mode, setMode } = useColorScheme();
-//   const [mounted, setMounted] = React.useState(false);
-
-//   // necessary for server-side rendering
-//   // because mode is undefined on the server
-//   React.useEffect(() => {
-//     setMounted(true);
-//   }, []);
-//   if (!mounted) {
-//     return null;
-//   }
-
-//   return (
-//     <Button
-//       variant="outlined"
-//       onClick={() => {
-//         setMode(mode === 'light' ? 'dark' : 'light');
-//       }}
-//     >
-//       {mode === 'light' ? 'Turn dark' : 'Turn light'}
-//     </Button>
-//   );
-// }
 
 export default function Login() {
   const [auth, setAuth] = useState({
@@ -41,15 +17,14 @@ export default function Login() {
   });
   return (
     <CssVarsProvider>
-      {/* <ModeToggle /> */}
       <main>
         <Sheet
           sx={{
             width: 300,
-            mx: 'auto', // margin left & right
-            my: 4, // margin top & botom
-            py: 3, // padding top & bottom
-            px: 2, // padding left & right
+            mx: 'auto', 
+            my: 4, 
+            py: 3, 
+            px: 2, 
             display: 'flex',
             flexDirection: 'column',
             gap: 2,
@@ -67,7 +42,6 @@ export default function Login() {
           <FormControl>
             <FormLabel>Email</FormLabel>
             <Input
-              // html input attribute
               name="email"
               type="email"
               placeholder="walterwhite@gmail.com"
@@ -77,7 +51,6 @@ export default function Login() {
           <FormControl>
             <FormLabel>Password</FormLabel>
             <Input
-              // html input attribute
               name="password"
               type="password"
               placeholder="password"
@@ -85,7 +58,7 @@ export default function Login() {
             />
           </FormControl>
 
-          <Button sx={{ mt: 1 /* margin top */ }}
+          <Button sx={{ mt: 1 }}
             onClick={(e) => { e.preventDefault(); LogInFunction(auth); }}>Log in</Button>
           <Typography
             endDecorator={<Link href="/#/signup">Sign up</Link>}
