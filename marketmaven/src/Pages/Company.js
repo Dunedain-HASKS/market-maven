@@ -76,25 +76,18 @@ const Company = () => {
                       className="d-flex justify-content-center mb-2"
                       style={{ marginRight: "10px" }}
                     >
-                      <Button
-                        variant="contained"
-                        onClick={() => {
-                          navigate("/companies ");
-                        }}
-                      >
-                        Go Back
-                      </Button>{" "}
-                    </div>
-                    <div className="d-flex justify-content-center mb-2">
-                      <Button
-                        variant="contained"
-                        // onClick={() => {
-                        //   navigate("/companies ");
-                        // }}
-                      >
-                        News
-                      </Button>{" "}
-                    </div>
+                      Go Back
+                  
+                  </div>
+                  <div className="d-flex justify-content-center mb-2">
+                    <Button
+                      variant="contained"
+                      onClick={() => {
+                        navigate(`/companies/${company._id}/news`);
+                      }}
+                    >
+                      News
+                    </Button>{" "}
                   </div>
                 </div>
               </div>
@@ -170,7 +163,8 @@ const Company = () => {
             </div>
           </div>
         </div>
-      )}
+        </div>
+        )}
     </>
   );
 };
