@@ -1,6 +1,9 @@
 import data from "../Data/companies.json";
 import imgs from "../Assets/complogo.js";
 import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
+import Company from "./Company";
+
 
 const Companies = () => {
   return (
@@ -40,17 +43,19 @@ const Companies = () => {
                 {/* <a className="btn btn-primary" href={comp.weburl} target="_blank">
                   More
                 </a> */}
-                <Button
-                  size="medium"
-                  variant="contained"
-                  style={{
-                    marginTop: "40px",
-                    color: "white",
-                    fontFamily: "Montserrat",
-                  }}
-                >
-                  More Info
-                </Button>
+                <Link to={`/companies/${Company._id}`}>
+                  <Button
+                    size="medium"
+                    variant="contained"
+                    style={{
+                      marginTop: "40px",
+                      color: "white",
+                      fontFamily: "Montserrat",
+                    }}
+                  >
+                    More Info
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>

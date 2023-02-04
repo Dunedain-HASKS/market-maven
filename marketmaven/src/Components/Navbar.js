@@ -48,7 +48,13 @@ export default function Navbar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
+          <img
+            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+            src="./Assets/MarketMaven.png"
+            alt=""
+            srcset=""
+          />
           <Typography
             variant="h6"
             noWrap
@@ -64,7 +70,7 @@ export default function Navbar() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            Market Maven
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -107,10 +113,14 @@ export default function Navbar() {
                 </Link>
               ))}
               {pages2.map((page) => (
-                <Link to='/market' style={{textDecoration:"none", color:"black"}}>
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem></Link>
+                <Link
+                  to="/market"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{page}</Typography>
+                  </MenuItem>
+                </Link>
               ))}
               {pages3.map((page) => (
                 <Link
@@ -133,12 +143,18 @@ export default function Navbar() {
               </MenuItem> */}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          {/* <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} /> */}
+          <img
+            className="bg-dark"
+            src="./Assets/MarketMaven.png"
+            alt=""
+            srcset=""
+          />
           <Typography
             variant="h5"
             noWrap
             component="a"
-            href=""
+            href="./Assets/MarketMaven.png"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -150,7 +166,7 @@ export default function Navbar() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            Market Maven
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {/* {pages.map((page) => (
@@ -173,11 +189,15 @@ export default function Navbar() {
               </Link>
             ))}
             {pages2.map((page) => (
-                <Link to='/market' style={{textDecoration:"none", color:"white"}}>
+              <Link
+                to="/market"
+                style={{ textDecoration: "none", color: "white" }}
+              >
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
-                </MenuItem></Link>
-              ))}
+                </MenuItem>
+              </Link>
+            ))}
             {pages3.map((page) => (
               <Link
                 to="/companies"
