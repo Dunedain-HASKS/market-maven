@@ -143,7 +143,7 @@ const Company = () => {
                     <div className="col-sm-9">
                       {keys.map((key) => {
                         return (
-                          <div className="row mt-3">
+                          <div className="row mt-3" key={key}>
                             <div className="col-sm-3">
                               <p className="card-text">{key}</p>
                             </div>
