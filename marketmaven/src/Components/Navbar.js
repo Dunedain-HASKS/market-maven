@@ -49,7 +49,6 @@ export default function Navbar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <img src={logo} style={{ width: "70px", height: "70px" }} alt="logo" />
           <Typography
             variant="h6"
             noWrap
@@ -60,12 +59,14 @@ export default function Navbar() {
               display: { xs: "none", md: "flex" },
               fontFamily: "montserrat",
               fontWeight: 700,
-              letterSpacing: ".3rem",
+              letterSpacing: ".2rem",
               color: "inherit",
               textDecoration: "none",
             }}
           >
-            Market Maven
+                  <img src={logo} style={{ width: "70px", height: "70px"}} alt="logo" />
+
+            <p style={{marginTop: "17.5px"}}>Market Maven</p>
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -79,6 +80,8 @@ export default function Navbar() {
             >
               <MenuIcon />
             </IconButton>
+            <img src={logo} style={{ width: "70px", height: "70px" }} alt="logo" />
+
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -97,6 +100,7 @@ export default function Navbar() {
                 display: { xs: "block", md: "none" },
               }}
             >
+
               {pages1.map((page, index) => (
                 <Link key={index}
                   to="/dashboard"
@@ -239,6 +243,7 @@ export default function Navbar() {
           </Box>
         </Toolbar>
       </Container>
+    
     </AppBar>
   );
 }
