@@ -39,7 +39,7 @@ const News = () => {
                 className="compcard card p-4"
               >
                 {/* <CardHeader title= style={{fontFamily: "Roboto", fontSize: "100px"}}/> */}
-                <h5 class="card-title" style={{fontFamily: "Lato", fontSize: "35px"}}>{item.headline}</h5>
+                <h5 className="card-title" style={{fontFamily: "Lato", fontSize: "35px"}}>{item.headline}</h5>
 
                 <div>
                   <p style={{fontFamily: "Monserrat", fontSize: "15px"}}>

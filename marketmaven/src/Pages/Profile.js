@@ -5,7 +5,17 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import { baseUrl } from "../shared";
 export default function Profile() {
-  const [data, setData] = useState();
+  const [data, setData] = useState({
+    active_schemes: [],
+    email: "",
+    funds: 0,
+    holdings: 0,
+    net_worth: [],
+    password: "",
+    portfolio: [],
+    transactions: [],
+    _id: ""
+  });
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -99,16 +109,16 @@ export default function Profile() {
                   <div className="card mb-4 mb-md-0">
                     <div className="card-body">
                       <div className="card-text mb-4">
-                        <p class="card-text mb-4">
-                          <span class="text-primary fst-italic me-1">
+                        <p className="card-text mb-4">
+                          <span className="text-primary fst-italic me-1">
                             Stocks
                           </span>
                           Portfolio
                         </p>
-                        <p class="card-text mb-2">Reliance</p>
-                        <div class="progress rounded">
+                        <p className="card-text mb-2">Reliance</p>
+                        <div className="progress rounded">
                           <div
-                            class="progress-bar bg-dark"
+                            className="progress-bar bg-dark"
                             role="progressbar"
                             aria-valuenow="80"
                             aria-valuemin="0"
@@ -116,10 +126,10 @@ export default function Profile() {
                             style={{ width: "80%" }}
                           ></div>
                         </div>
-                        <p class="card-text mb-2 mt-3">ONGC</p>
-                        <div class="progress rounded">
+                        <p className="card-text mb-2 mt-3">ONGC</p>
+                        <div className="progress rounded">
                           <div
-                            class="progress-bar bg-dark"
+                            className="progress-bar bg-dark"
                             role="progressbar"
                             aria-valuenow="80"
                             aria-valuemin="0"
@@ -127,10 +137,10 @@ export default function Profile() {
                             style={{ width: "80%" }}
                           ></div>
                         </div>
-                        <p class="card-text mb-2 mt-3">SBIN </p>
-                        <div class="progress rounded">
+                        <p className="card-text mb-2 mt-3">SBIN </p>
+                        <div className="progress rounded">
                           <div
-                            class="progress-bar bg-dark"
+                            className="progress-bar bg-dark"
                             role="progressbar"
                             aria-valuenow="80"
                             aria-valuemin="0"
@@ -138,10 +148,10 @@ export default function Profile() {
                             style={{ width: "80%" }}
                           ></div>
                         </div>
-                        <p class="card-text mb-2 mt-3">HDFC </p>
-                        <div class="progress rounded">
+                        <p className="card-text mb-2 mt-3">HDFC </p>
+                        <div className="progress rounded">
                           <div
-                            class="progress-bar bg-dark"
+                            className="progress-bar bg-dark"
                             role="progressbar"
                             aria-valuenow="80"
                             aria-valuemin="0"
@@ -149,10 +159,10 @@ export default function Profile() {
                             style={{ width: "80%" }}
                           ></div>
                         </div>
-                        <p class="card-text mb-2 mt-3">Nifty Bees </p>
-                        <div class="progress rounded">
+                        <p className="card-text mb-2 mt-3">Nifty Bees </p>
+                        <div className="progress rounded">
                           <div
-                            class="progress-bar bg-dark"
+                            className="progress-bar bg-dark"
                             role="progressbar"
                             aria-valuenow="80"
                             aria-valuemin="0"
@@ -174,16 +184,16 @@ export default function Profile() {
                   <div className="card mb-4 mb-md-0">
                     <div className="card-body">
                       <div className="card-text mb-4">
-                        <p class="card-text mb-4">
-                          <span class="text-primary fst-italic me-1">
+                        <p className="card-text mb-4">
+                          <span className="text-primary fst-italic me-1">
                             Stocks
                           </span>
                           Portfolio
                         </p>
-                        <p class="card-text mb-2">Reliance</p>
-                        <div class="progress rounded">
+                        <p className="card-text mb-2">Reliance</p>
+                        <div className="progress rounded">
                           <div
-                            class="progress-bar bg-dark"
+                            className="progress-bar bg-dark"
                             role="progressbar"
                             aria-valuenow="80"
                             aria-valuemin="0"
@@ -191,10 +201,10 @@ export default function Profile() {
                             style={{ width: "80%" }}
                           ></div>
                         </div>
-                        <p class="card-text mb-2 mt-3">ONGC</p>
-                        <div class="progress rounded">
+                        <p className="card-text mb-2 mt-3">ONGC</p>
+                        <div className="progress rounded">
                           <div
-                            class="progress-bar bg-dark"
+                            className="progress-bar bg-dark"
                             role="progressbar"
                             aria-valuenow="80"
                             aria-valuemin="0"
@@ -202,10 +212,10 @@ export default function Profile() {
                             style={{ width: "80%" }}
                           ></div>
                         </div>
-                        <p class="card-text mb-2 mt-3">SBIN </p>
-                        <div class="progress rounded">
+                        <p className="card-text mb-2 mt-3">SBIN </p>
+                        <div className="progress rounded">
                           <div
-                            class="progress-bar bg-dark"
+                            className="progress-bar bg-dark"
                             role="progressbar"
                             aria-valuenow="80"
                             aria-valuemin="0"
@@ -213,10 +223,10 @@ export default function Profile() {
                             style={{ width: "80%" }}
                           ></div>
                         </div>
-                        <p class="card-text mb-2 mt-3">HDFC </p>
-                        <div class="progress rounded">
+                        <p className="card-text mb-2 mt-3">HDFC </p>
+                        <div className="progress rounded">
                           <div
-                            class="progress-bar bg-dark"
+                            className="progress-bar bg-dark"
                             role="progressbar"
                             aria-valuenow="80"
                             aria-valuemin="0"
@@ -224,10 +234,10 @@ export default function Profile() {
                             style={{ width: "80%" }}
                           ></div>
                         </div>
-                        <p class="card-text mb-2 mt-3">Nifty Bees </p>
-                        <div class="progress rounded">
+                        <p className="card-text mb-2 mt-3">Nifty Bees </p>
+                        <div className="progress rounded">
                           <div
-                            class="progress-bar bg-dark"
+                            className="progress-bar bg-dark"
                             role="progressbar"
                             aria-valuenow="80"
                             aria-valuemin="0"
