@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/market-maven/static/css/main.dfb7dc75.css",
-    "main.js": "/market-maven/static/js/main.e67ea26c.js",
+    "main.css": "/market-maven/static/css/main.4fb58c9d.css",
+    "main.js": "/market-maven/static/js/main.4391e3d3.js",
     "static/media/Error404.png": "/market-maven/static/media/Error404.a2e6014226461f4f41a8.png",
     "static/media/Starbucks.png": "/market-maven/static/media/Starbucks.f8e32f3cf680d2c245c2.png",
     "static/media/Costco.png": "/market-maven/static/media/Costco.6dc37cd428b8f4156e3a.png",
@@ -35,6 +35,7 @@
     "static/media/roboto-cyrillic-ext-400-normal.woff2": "/market-maven/static/media/roboto-cyrillic-ext-400-normal.804378952da8a10faae2.woff2",
     "static/media/roboto-cyrillic-ext-300-normal.woff2": "/market-maven/static/media/roboto-cyrillic-ext-300-normal.4777461b144e55145268.woff2",
     "static/media/roboto-cyrillic-ext-500-normal.woff2": "/market-maven/static/media/roboto-cyrillic-ext-500-normal.62ced72e5832f02c2796.woff2",
+    "static/media/MarketMaven.png": "/market-maven/static/media/MarketMaven.0c7a440c38a0de983262.png",
     "static/media/roboto-cyrillic-ext-700-normal.woff2": "/market-maven/static/media/roboto-cyrillic-ext-700-normal.be4d02458ce53887dc37.woff2",
     "static/media/montserrat-latin-400-normal.woff2": "/market-maven/static/media/montserrat-latin-400-normal.acb6629fe45c43ad5d8b.woff2",
     "static/media/roboto-latin-ext-400-normal.woff2": "/market-maven/static/media/roboto-latin-ext-400-normal.861b791f9de857a6e7bc.woff2",
@@ -64,11 +65,11 @@
     "static/media/roboto-greek-ext-300-normal.woff2": "/market-maven/static/media/roboto-greek-ext-300-normal.35b9d6be04b95f0f0530.woff2",
     "static/media/roboto-greek-ext-700-normal.woff2": "/market-maven/static/media/roboto-greek-ext-700-normal.bd9854c751441ccc1a70.woff2",
     "index.html": "/market-maven/index.html",
-    "main.dfb7dc75.css.map": "/market-maven/static/css/main.dfb7dc75.css.map",
-    "main.e67ea26c.js.map": "/market-maven/static/js/main.e67ea26c.js.map"
+    "main.4fb58c9d.css.map": "/market-maven/static/css/main.4fb58c9d.css.map",
+    "main.4391e3d3.js.map": "/market-maven/static/js/main.4391e3d3.js.map"
   },
   "entrypoints": [
-    "static/css/main.dfb7dc75.css",
-    "static/js/main.e67ea26c.js"
+    "static/css/main.4fb58c9d.css",
+    "static/js/main.4391e3d3.js"
   ]
 }
