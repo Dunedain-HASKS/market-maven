@@ -133,7 +133,7 @@ async function signUpFunction(user, navigate) {
   localStorage.setItem("id", res.data._id);
 
   if (res.status === 200) {
-    navigate("/");
+    navigate("/dashboard");
   }
   if (res.status === 404) {
     alert("Please Enter the Password");
