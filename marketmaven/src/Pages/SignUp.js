@@ -7,7 +7,8 @@ import FormLabel from '@mui/joy/FormLabel';
 import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
 import Link from '@mui/joy/Link';
-
+import { useState } from 'react';
+import axios from 'axios';
 // function ModeToggle() {
 //   const { mode, setMode } = useColorScheme();
 //   const [mounted, setMounted] = React.useState(false);
@@ -34,17 +35,22 @@ import Link from '@mui/joy/Link';
 // }
 
 export default function SignUp() {
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: ""
+  });
+
   return (
     <CssVarsProvider>
-        {/* <ModeToggle /> */}
       <main>
         <Sheet
           sx={{
             width: 300,
-            mx: 'auto', // margin left & right
-            my: 4, // margin top & botom
-            py: 3, // padding top & bottom
-            px: 2, // padding left & right
+            mx: 'auto',
+            my: 4,
+            py: 3,
+            px: 2,
             display: 'flex',
             flexDirection: 'column',
             gap: 2,
@@ -62,32 +68,33 @@ export default function SignUp() {
           <FormControl>
             <FormLabel>Name</FormLabel>
             <Input
-              // html input attribute
               name="name"
               type="text"
               placeholder="Skyler White Yo!"
+              onChange={(e) => { setUser({ ...user, name: e.target.value }) }}
             />
           </FormControl>
           <FormControl>
             <FormLabel>Email</FormLabel>
             <Input
-              // html input attribute
               name="email"
               type="email"
               placeholder="walterwhite@gmail.com"
+              onChange={(e) => { setUser({ ...user, email: e.target.value }) }}
             />
           </FormControl>
           <FormControl>
             <FormLabel>Password</FormLabel>
             <Input
-              // html input attribute
               name="password"
               type="password"
               placeholder="password"
+              minLength={8}
+              onChange={(e) => { setUser({ ...user, password: e.target.value }) }}
             />
           </FormControl>
 
-          <Button sx={{ mt: 1 /* margin top */ }}>Sign Up</Button>
+          <Button sx={{ mt: 1 }} onClick={(e) => { e.preventDefault(); signUpFunction(user); }}>Sign Up</Button>
           <Typography
             endDecorator={<Link href="/">Log in</Link>}
             fontSize="sm"
@@ -100,3 +107,16 @@ export default function SignUp() {
     </CssVarsProvider>
   );
 }
+
+async function signUpFunction(user) {
+  const res = await axios.post('https://azathoth-production.up.railway.app/user/', {
+    email: user.email,
+    password: user.password,
+    name: user.name
+  }).catch((err) => {
+    alert(err);
+  });
+  const data = await res.data.data;
+ 
+  localStorage.setItem('id', data._id);
+};

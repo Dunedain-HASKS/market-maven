@@ -7,7 +7,8 @@ import FormLabel from '@mui/joy/FormLabel';
 import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
 import Link from '@mui/joy/Link';
-
+import { useState } from 'react';
+import axios from 'axios';
 // function ModeToggle() {
 //   const { mode, setMode } = useColorScheme();
 //   const [mounted, setMounted] = React.useState(false);
@@ -34,9 +35,13 @@ import Link from '@mui/joy/Link';
 // }
 
 export default function Login() {
+  const [auth, setAuth] = useState({
+    email: '',
+    password: '',
+  });
   return (
     <CssVarsProvider>
-        {/* <ModeToggle /> */}
+      {/* <ModeToggle /> */}
       <main>
         <Sheet
           sx={{
@@ -66,6 +71,7 @@ export default function Login() {
               name="email"
               type="email"
               placeholder="walterwhite@gmail.com"
+              onChange={(e) => { setAuth({ ...auth, email: e.target.value }) }}
             />
           </FormControl>
           <FormControl>
@@ -75,10 +81,12 @@ export default function Login() {
               name="password"
               type="password"
               placeholder="password"
+              onChange={(e) => { setAuth({ ...auth, password: e.target.value }) }}
             />
           </FormControl>
 
-          <Button sx={{ mt: 1 /* margin top */ }}>Log in</Button>
+          <Button sx={{ mt: 1 /* margin top */ }}
+            onClick={(e) => { e.preventDefault(); LogInFunction(auth); }}>Log in</Button>
           <Typography
             endDecorator={<Link href="/#/signup">Sign up</Link>}
             fontSize="sm"
@@ -91,3 +99,17 @@ export default function Login() {
     </CssVarsProvider>
   );
 }
+
+const LogInFunction = async (auth) => {
+  const res = await axios.post('https://azathoth-production.up.railway.app/auth/', {
+    email: auth.email,
+    password: auth.password,
+  }).catch((err) => {
+    alert(err);
+  });
+  const data = await res.data.data;
+  localStorage.setItem('id', data._id);
+  console.log(data,localStorage.getItem('id'));
+};
+
+
