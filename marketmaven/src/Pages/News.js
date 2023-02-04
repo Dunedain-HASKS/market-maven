@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import '@fontsource/montserrat';
 import '@fontsource/lato';
+import { Loading } from "../Components/Loading";
 
 const News = () => {
   const [news, setNews] = useState([]);
@@ -22,7 +23,7 @@ const News = () => {
   }, []);
 
   return (
-    <>{isLoading ? (<div>Loading</div>) :
+    <>{isLoading ? (<Loading />) :
 
       (<>
         <Container align="center">
