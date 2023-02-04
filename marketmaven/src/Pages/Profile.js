@@ -12,7 +12,7 @@ export default function Profile() {
     const id = localStorage.getItem("id");
     console.log(id);
     const baseurl = baseUrl;
-    console.log(baseurl + "user/" + id);
+    // console.log(baseurl + "user/" + id);
     fetch(baseurl + "user/" + id, {
       method: "GET",
       headers: {
