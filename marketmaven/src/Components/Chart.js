@@ -18,7 +18,7 @@ function Chart(props) {
         y: props.stock.historic_data[i].price.close
       });
   }setDataPoints(fetchedDataPoints);
-  }, []);
+  }, [props]);
 
   const options = {
     theme: "light2",

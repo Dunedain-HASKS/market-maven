@@ -24,6 +24,7 @@ export default function Test() {
       },
     })
       .then((response) => {
+        console.log(response);
         if (!response.ok) {
           throw new Error("Something went wrong");
         }
