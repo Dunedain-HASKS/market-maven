@@ -90,7 +90,7 @@ export default function Profile() {
                   <p className="card-text">Net worth</p>
                 </div>
                 <div className="col-sm-9">
-                  <p className="card-text text-muted">{data.net_worth.length ? (data.net_worth[data.net_worth.length - 1].value): ""}</p>
+                  <p className="card-text text-muted">{data.net_worth[data.net_worth.length - 1] ? (data.net_worth[data.net_worth.length - 1].value): ""}</p>
                 </div>
               </div>
               <div className="row mt-3">
@@ -141,7 +141,7 @@ export default function Profile() {
                         <p className="card-text mb-2 mt-3">SBIN </p>
                         <div className="progress rounded">
                           <div
-                            className="progress-bar bg-dark"
+                            className="progress-bar bg-success"
                             role="progressbar"
                             aria-valuenow="80"
                             aria-valuemin="0"
@@ -204,12 +204,12 @@ export default function Profile() {
                         <p className="card-text mb-2 mt-3">ONGC</p>
                         <div className="progress rounded">
                           <div
-                            className="progress-bar bg-dark"
+                            className="progress-bar"
                             role="progressbar"
                             aria-valuenow="80"
                             aria-valuemin="0"
                             aria-valuemax="100"
-                            style={{ width: "80%" }}
+                            style={{ width: "80%", backgroundColor: "#ba03fc" }}
                           ></div>
                         </div>
                         <p className="card-text mb-2 mt-3">SBIN </p>

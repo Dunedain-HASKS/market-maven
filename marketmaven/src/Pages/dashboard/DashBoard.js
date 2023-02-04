@@ -21,13 +21,16 @@ import { mainListItems, secondaryListItems } from './listItems';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { baseUrl } from '../../shared';
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://github.com/LosPollosHermanos-HASKS">
-        Github organization
+        LosPollosHermanos
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -85,7 +88,38 @@ const mdTheme = createTheme();
 
 function DashboardContent() {
 
+  const navigate = useNavigate();
+  const [data, setData] = useState({
+    name: "",
+    active_schemes: [],
+    email: "",
+    funds: 0,
+    holdings: 0,
+    net_worth: [],
+    password: "",
+    portfolio: [],
+    transactions: [],
+    _id: ""
+  });
 
+  useEffect(() => {
+    const id = localStorage.getItem("id");
+    // console.log(id);
+    const baseurl = baseUrl;
+    // console.log(baseurl + "user/" + id);
+    fetch(baseurl + "user/" + id, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      //   body: { id },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data.data);
+      });
+      console.log(data);
+  }, []);
 
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
@@ -130,7 +164,7 @@ function DashboardContent() {
           }}
         >
           <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+          <Container maxWidth="lg" sx={{ mt: 0, mb: 4 }}>
             <Grid container spacing={3}>
               {/* Chart */}
               <Grid item xs={12} md={8} lg={9}>
@@ -139,10 +173,11 @@ function DashboardContent() {
                     p: 2,
                     display: 'flex',
                     flexDirection: 'column',
-                    height: 240,
+                    height: 420,
                   }}
+                  
                 >
-                  <Chart />
+                  <Chart stock={data}/>
                 </Paper>
               </Grid>
               {/* Recent Deposits */}
@@ -152,15 +187,15 @@ function DashboardContent() {
                     p: 2,
                     display: 'flex',
                     flexDirection: 'column',
-                    height: 240,
+                    height: 240,  
                   }}
                 >
-                  <Deposits />
+                  <Deposits stock={data}/>
                 </Paper>
               </Grid>
               {/* Recent Orders */}
               <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }} style={{marginTop: "20px"}}>
                   <Orders />
                 </Paper>
               </Grid>

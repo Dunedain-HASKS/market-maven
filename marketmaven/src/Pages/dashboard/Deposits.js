@@ -7,18 +7,21 @@ function preventDefault(event) {
   event.preventDefault();
 }
 
-export default function Deposits() {
+export default function Deposits(props) {
 
-
+React.useEffect(()=>{
+  // console.log(props.stock.net_worth[props.stock.net_worth.length-1].date);
+})
 
   return (
     <React.Fragment>
       <Title>Funds available</Title>
       <Typography component="p" variant="h4">
-        $3,024.00
+        $ {Math.round(props.stock.funds)}
       </Typography>
       <Typography color="text.secondary" sx={{ flex: 1 }}>
-        on 15 March, 2019
+      on  {props.stock.net_worth[props.stock.net_worth.length-1] ? props.stock.net_worth[props.stock.net_worth.length-1].date : null}
+
       </Typography>
       {/* <div>
         <Link color="primary" href="#" onClick={preventDefault}>
