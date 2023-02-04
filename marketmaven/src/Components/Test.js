@@ -43,26 +43,20 @@ export default function Test() {
     // console.log(c);
 
     setSelected(c);
-    axios
-      .get(
-        baseurl + '/stocks' + c.id
-      )
-      .then((response) => {
-        setChart(response.data);
-        console.log(chart);
-      });
+    axios.get(baseurl + "/stocks" + c.id).then((response) => {
+      setChart(response.data);
+      console.log(chart);
+    });
   }
   const id = localStorage.getItem("id");
   const [user, setUser] = useState();
   useEffect(() => {
-    fetch(baseurl + "user/", {
+    fetch(baseurl + `user/${id}`, {
       method: "GET",
-      body: id,
     })
       .then((response) => response.json)
       .then((data) => {
         setUser(data);
-        console.log(data);
       });
   });
 
