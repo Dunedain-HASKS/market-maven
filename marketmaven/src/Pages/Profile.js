@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 export default function Profile() {
   const [data, setData] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const id = localStorage.getItem("id");
@@ -49,8 +50,14 @@ export default function Profile() {
                 308 Negra Arroyo Lane, Albuquerque, New Mexico.
               </p>
               <div className="d-flex justify-content-center mb-2">
-                <button className="btn btn-dark">Log Out</button>
-              </div>
+              <Button
+                  variant="contained"
+                  onClick={() => {
+                    navigate("/");
+                  }}
+                >
+                  Log Out
+                </Button>              </div>
             </div>
           </div>
         </div>
