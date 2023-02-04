@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { baseUrl } from "../shared";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -98,9 +99,10 @@ function ValidateEmail(mail) {
 }
 
 const LogInFunction = async (navigate, auth) => {
+  console.log(auth,baseUrl);
   const res = (
     await axios
-      .post("https://azathoth-production.up.railway.app/auth/", {
+      .post(baseUrl +"auth/", {
         email: auth.email,
         password: auth.password,
       })
@@ -114,14 +116,16 @@ const LogInFunction = async (navigate, auth) => {
     alert(res.message);
     return;
   }
-  if (res.status === 200) {
-    navigate("/dashboard");
-  }
-  if (res.status === 404) {
-    alert("Please Enter the Password");
-  }
 
-  const data = await res.data.data;
+  const data = res.data.data;
+  console.log(res.data);
   localStorage.setItem("id", data._id);
   console.log(data, localStorage.getItem("id"));
+
+  // if (res.status === 200) {
+  //   navigate("/dashboard");
+  // }
+  // if (res.status === 404) {
+  //   alert("Please Enter the Password");
+  // }
 };

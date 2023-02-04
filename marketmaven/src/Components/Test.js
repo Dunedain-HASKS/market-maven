@@ -2,14 +2,15 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { json, Link } from "react-router-dom";
 import Chart from "./Chart";
+import { baseUrl } from "../shared";
 
 export default function Test() {
   const [stocks, setStocks] = useState();
   const [selected, setSelected] = useState();
   const [chart, setChart] = useState();
 
-  const baseurl = "https://azathoth-production.up.railway.app/";
-  
+  const baseurl = baseUrl;
+
   useEffect(() => {
     // axios.get(url).then((response) => {
     //   setStocks(response.data);
@@ -39,7 +40,7 @@ export default function Test() {
 
   function select(e) {
     const c = stocks.data?.find((x) => x._id === e.target.value);
-    console.log(c);
+    // console.log(c);
 
     setSelected(c);
     // axios
@@ -51,19 +52,23 @@ export default function Test() {
     //     console.log(chart);
     //   });
   }
-  const id = localStorage.getItem('id');
-  const [user,setUser] = useState();
-  useEffect(()=>{
-    fetch(baseurl + 'user/', {
-        body: id
-    }).then((response)=> response.json).then((data)=>{
-        setUser(data);
+  const id = localStorage.getItem("id");
+  const [user, setUser] = useState();
+  useEffect(() => {
+    fetch(baseurl + "user/", {
+      method: "GET",
+      body: id,
     })
-  })
+      .then((response) => response.json)
+      .then((data) => {
+        setUser(data);
+        console.log(data);
+      });
+  });
 
   return (
     <>
-      <h1>{user.funds}</h1>
+      {/* <h1>{user.funds}</h1> */}
       <select onChange={select}>
         {stocks
           ? stocks.data.map((stock) => {
@@ -75,7 +80,7 @@ export default function Test() {
             })
           : null}
       </select>
-      {selected ? <Chart stock={selected}/> : null}
+      {selected ? <Chart stock={selected} /> : null}
     </>
   );
 }

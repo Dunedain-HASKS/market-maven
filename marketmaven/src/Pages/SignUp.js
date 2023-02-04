@@ -10,6 +10,7 @@ import Link from "@mui/joy/Link";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { baseUrl } from "../shared";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -112,9 +113,10 @@ function ValidateEmail(mail) {
 }
 
 async function signUpFunction(user, navigate) {
+  const baseurl = baseUrl
   const res = (
     await axios
-      .post("https://azathoth-production.up.railway.app/user/", {
+      .post(baseurl +"/user/", {
         email: user.email,
         password: user.password,
         name: user.name,

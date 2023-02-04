@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import Switch from "@mui/material/Switch";
+import {baseUrl} from "../shared";
 
 
 
@@ -56,15 +57,16 @@ function ChildModal(props) {
 export default function NestedModal(props) {
     const id = localStorage.getItem('id');
     React.useEffect(()=>{
-        console.log(props.stock.stock._id);
+        // console.log(props.stock.stock._id);
         // console.log(price);
         // console.log(id);
+        console.log(props);
     })
 
-    const baseUrl = "https://azathoth-production.up.railway.app/"
+    const baseurl = baseUrl
     function buy(id, amt, stockid) {
         const data = { id : id, amount : amt };
-        const url = baseUrl + "stocks/" + stockid + "/buy";
+        const url = baseurl + "stocks/" + stockid + "/buy";
         fetch(url, {
           method: "POST",
           headers :{

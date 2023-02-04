@@ -3,35 +3,30 @@ import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
+import { baseUrl } from "../shared";
 export default function Profile() {
   const [data, setData] = useState();
   const navigate = useNavigate();
 
   useEffect(() => {
     const id = localStorage.getItem("id");
-    // console.log(id);
-    const baseurl = "https://azathoth-production.up.railway.app/";
-    // console.log(baseurl + "user/");
-    fetch(baseurl + "user/", {
+    console.log(id);
+    const baseurl = baseUrl;
+    console.log(baseurl + "user/" + id);
+    fetch(baseurl + "user/" + id, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
-      body: { id },
+      //   body: { id },
     })
       .then((response) => response.json())
       .then((data) => {
         setData(data);
-    });
-    console.log(data);
+        console.log(data);
+      });
 
-    // axios.get(baseurl + 'user/',{
-    //     body : {id}
-    // }).then((response) => {
-    //     setData(response.data);
-    //     console.log(data);
-    //   });
-  });
+  },[]);
 
   return (
     <div className="container py-5">
@@ -50,14 +45,15 @@ export default function Profile() {
                 308 Negra Arroyo Lane, Albuquerque, New Mexico.
               </p>
               <div className="d-flex justify-content-center mb-2">
-              <Button
+                <Button
                   variant="contained"
                   onClick={() => {
                     navigate("/");
                   }}
                 >
                   Log Out
-                </Button>              </div>
+                </Button>{" "}
+              </div>
             </div>
           </div>
         </div>
