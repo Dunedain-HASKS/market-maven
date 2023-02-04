@@ -6,6 +6,8 @@ import { shadows } from "@mui/system";
 import Axios from "axios";
 import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
+import '@fontsource/montserrat';
+import '@fontsource/lato';
 
 const News = () => {
   const [news, setNews] = useState([]);
@@ -26,24 +28,26 @@ const News = () => {
         <Container align="center">
           {news.map((item, index) => (
             <div key={index}>
-              <Card
+              <div
                 style={{
                   maxWidth: "60vw",
                   minHeight: "200px",
                   marginTop: "30px",
                   boxShadow: "5px 10px 5px lightgrey",
                 }}
-                className="compcard p-4"
+                className="compcard card p-4"
               >
-                <CardHeader title={item.headline} />
+                {/* <CardHeader title= style={{fontFamily: "Roboto", fontSize: "100px"}}/> */}
+                <h5 class="card-title" style={{fontFamily: "Lato", fontSize: "35px"}}>{item.headline}</h5>
+
                 <div>
-                  <p>
+                  <p style={{fontFamily: "Monserrat", fontSize: "15px"}}>
                     <span style={{ marginRight: "30px" }}>
                       Category: {item.category}
                     </span>
                     <span>Source:{item.source}</span>
                   </p>
-                  <p>{item.summary}</p>
+                  <p style={{fontFamily: "Monserrat", fontSize: "20px"}}>{item.summary}</p>
                   <a href={item.url} target="_blank">
                   <Button
                     size="medium"
@@ -60,7 +64,7 @@ const News = () => {
                 </div>
                 {/* <img src={item.image} style={{ width: "200px", height: "200px", marginTop: "10px" }} alt="img"/> */}
                 {/* <img id="currentPhoto" src={item.image} onerror="this.onerror=null; this.src='https://media.istockphoto.com/id/458650983/photo/financial-newspapers-on-a-newsstand.jpg?s=612x612&w=0&k=20&c=axPQH7JmSkL2HD0SZQPOTJ0QKzazL_yknRN5cW-zMZI='" style={{ width: "200px", height: "200px", marginTop: "10px" }} alt="img" /> */}
-              </Card>
+              </div>
             </div>
           ))}
         </Container>

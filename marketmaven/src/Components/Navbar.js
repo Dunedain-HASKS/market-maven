@@ -14,6 +14,8 @@ import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import logo from "../Assets/MarketMaven.png";
 import profile from "../Assets/profile.png";
+import '@fontsource/montserrat';
+import '@fontsource/lato';
 
 // const pages = ["Products", "Pricing", "Blog", "Companies"];
 const pages1 = ["Dashboard"];
@@ -56,7 +58,7 @@ export default function Navbar() {
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
+              fontFamily: "montserrat",
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
