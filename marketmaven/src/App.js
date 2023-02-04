@@ -11,6 +11,7 @@ import News from "./Pages/News";
 import Company from "./Pages/Company";
 import Market from "./Pages/Market";
 import Test from "./Components/Test";
+import Chart from "./Components/Chart";
 import { useNavigate } from "react-router-dom";
 
 function App() {
@@ -26,9 +27,10 @@ function App() {
           <Route path="/companies/:id" element={<Company />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/news" element={<News />} />
-          <Route path="/market" element={<Market />} />
+          <Route path="/market" element={<Test />} />
           <Route path="/news" element={<News />} />
           <Route path="/test" element={<Test />} />
+          <Route path="/chart" element={<Chart/>}/>
           <Route path="*" element={<Error404 />} />
         </Routes>
       </HashRouter>
