@@ -114,7 +114,7 @@ function ValidateEmail(mail) {
 async function signUpFunction(user, navigate) {
   const res = (
     await axios
-      .post("https://azathoth-production.up.railway.app/user/", {
+      .post("https://https://azathoth.onrender.com//user/", {
         email: user.email,
         password: user.password,
         name: user.name,
