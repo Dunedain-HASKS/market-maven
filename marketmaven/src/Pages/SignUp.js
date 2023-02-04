@@ -126,19 +126,20 @@ async function signUpFunction(user, navigate) {
       })
   ).data;
 
-  const data = await res.data;
-  localStorage.setItem("id", data._id);
-  console.log(data, localStorage.getItem("id"));
-
+  const data = res.data;
   if (res.status === 401) {
     alert(res.message);
     return;
   }
-  if (res.status === 404) {
-    alert(res.message);
-    return;
-  }
+
+  console.log(res);
+  localStorage.setItem("id", data._id);
+  console.log(res.data, localStorage.getItem("id"));
+
   if (res.status === 200) {
     navigate("/");
+  }
+  if (res.status === 404) {
+    alert("Please Enter the Password");
   }
 }

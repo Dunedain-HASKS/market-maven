@@ -99,7 +99,7 @@ function ValidateEmail(mail) {
 }
 
 const LogInFunction = async (navigate, auth) => {
-  console.log(auth,baseUrl);
+  
   const res = (
     await axios
       .post(baseUrl +"auth/", {
@@ -110,24 +110,19 @@ const LogInFunction = async (navigate, auth) => {
         alert(err);
       })
   ).data;
-
-  localStorage.setItem("id", data._id);
-  console.log(data, localStorage.getItem("id"));
-
+  const data = res.data;
+  
+  
   if (res.status === 401) {
     alert(res.message);
     return;
   }
-
-  const data = res.data.data;
-  console.log(res.data);
   localStorage.setItem("id", data._id);
-  console.log(data, localStorage.getItem("id"));
 
-  // if (res.status === 200) {
-  //   navigate("/dashboard");
-  // }
-  // if (res.status === 404) {
-  //   alert("Please Enter the Password");
-  // }
+  if (res.status === 200) {
+    navigate("/dashboard");
+  }
+  if (res.status === 404) {
+    alert("Please Enter the Password");
+  }
 };
