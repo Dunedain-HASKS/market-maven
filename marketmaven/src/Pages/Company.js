@@ -76,18 +76,25 @@ const Company = () => {
                       className="d-flex justify-content-center mb-2"
                       style={{ marginRight: "10px" }}
                     >
-                      Go Back
-                  
-                  </div>
-                  <div className="d-flex justify-content-center mb-2">
-                    <Button
-                      variant="contained"
-                      onClick={() => {
-                        navigate(`/companies/${company._id}/news`);
-                      }}
-                    >
-                      News
-                    </Button>{" "}
+                      <Button
+                        variant="contained"
+                        onClick={() => {
+                          navigate("/companies ");
+                        }}
+                      >
+                        Go Back
+                      </Button>{" "}
+                    </div>
+                    <div className="d-flex justify-content-center mb-2">
+                      <Button
+                        variant="contained"
+                        onClick={() => {
+                          navigate(`/companies/${company._id}/news`);
+                        }}
+                      >
+                        News
+                      </Button>{" "}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -143,9 +150,10 @@ const Company = () => {
                         return (
                           <div className="row mb-4" key={key}>
                             <div className="col-sm-8">
-                              {//const result = text.replace(/([A-Z])/g, " $1");
-//const finalResult = result.charAt(0).toUpperCase() + result.slice(1);
-}
+                              {
+                                //const result = text.replace(/([A-Z])/g, " $1");
+                                //const finalResult = result.charAt(0).toUpperCase() + result.slice(1);
+                              }
                               <p className="card-text">{stringParser(key)}</p>
                             </div>
                             <div className="col-sm-4">
@@ -163,8 +171,7 @@ const Company = () => {
             </div>
           </div>
         </div>
-        </div>
-        )}
+      )}
     </>
   );
 };
