@@ -43,14 +43,14 @@ export default function Test() {
     // console.log(c);
 
     setSelected(c);
-    // axios
-    //   .get(
-    //     baseurl + '/stocks' + c.id
-    //   )
-    //   .then((response) => {
-    //     setChart(response.data);
-    //     console.log(chart);
-    //   });
+    axios
+      .get(
+        baseurl + '/stocks' + c.id
+      )
+      .then((response) => {
+        setChart(response.data);
+        console.log(chart);
+      });
   }
   const id = localStorage.getItem("id");
   const [user, setUser] = useState();

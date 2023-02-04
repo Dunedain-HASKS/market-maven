@@ -81,7 +81,7 @@ export default function Profile() {
                   <p className="card-text">Phone</p>
                 </div>
                 <div className="col-sm-9">
-                  <p className="card-text text-muted">8160004051</p>
+                  <p className="card-text text-muted">9662515890</p>
                 </div>
               </div>
               <div className="row mt-3">
@@ -89,7 +89,7 @@ export default function Profile() {
                   <p className="card-text">Mobile</p>
                 </div>
                 <div className="col-sm-9">
-                  <p className="card-text text-muted">8160004051</p>
+                  <p className="card-text text-muted">9662515890</p>
                 </div>
               </div>
             </div>

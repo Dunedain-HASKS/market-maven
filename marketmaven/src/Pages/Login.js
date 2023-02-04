@@ -7,7 +7,7 @@ import FormLabel from "@mui/joy/FormLabel";
 import Input from "@mui/joy/Input";
 import Button from "@mui/joy/Button";
 // import Link from "@mui/joy/Link";
-import { Link } from 'react-router-dom'; 
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -111,7 +111,10 @@ const LogInFunction = async (navigate, auth) => {
       })
   ).data;
 
-  console.log(res);
+  const data = await res.data;
+  localStorage.setItem("id", data._id);
+  console.log(data, localStorage.getItem("id"));
+
   if (res.status === 401) {
     alert(res.message);
     return;

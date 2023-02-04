@@ -11,10 +11,11 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
 import logo from "../Assets/MarketMaven.png";
 import profile from "../Assets/profile.png";
+import '@fontsource/montserrat';
+import '@fontsource/lato';
 
 // const pages = ["Products", "Pricing", "Blog", "Companies"];
 const pages1 = ["Dashboard"];
@@ -48,7 +49,7 @@ export default function Navbar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <img src={logo} style={{ width: "70px", height: "70px" }} />
+          <img src={logo} style={{ width: "70px", height: "70px" }} alt="logo" />
           <Typography
             variant="h6"
             noWrap
@@ -57,7 +58,7 @@ export default function Navbar() {
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
+              fontFamily: "montserrat",
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
@@ -96,32 +97,32 @@ export default function Navbar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages1.map((page) => (
-                <Link
+              {pages1.map((page, index) => (
+                <Link key={index}
                   to="/dashboard"
                   style={{ textDecoration: "none", color: "black" }}
                 >
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <MenuItem onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
                 </Link>
               ))}
-              {pages2.map((page) => (
-                <Link
+              {pages2.map((page, index) => (
+                <Link key={index}
                   to="/market"
                   style={{ textDecoration: "none", color: "black" }}
                 >
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <MenuItem onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
                 </Link>
               ))}
-              {pages3.map((page) => (
-                <Link
+              {pages3.map((page, index) => (
+                <Link key={index}
                   to="/companies"
                   style={{ textDecoration: "none", color: "black" }}
                 >
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <MenuItem onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
                 </Link>
@@ -133,7 +134,6 @@ export default function Navbar() {
             className="bg-dark"
             src="./Assets/MarketMaven.png"
             alt=""
-            srcset=""
           />
           <Typography
             variant="h5"
@@ -154,42 +154,42 @@ export default function Navbar() {
             Market Maven
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages1.map((page) => (
-              <Link
+            {pages1.map((page, index) => (
+              <Link key={index}
                 to="/dashboard"
                 style={{ textDecoration: "none", color: "white" }}
               >
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               </Link>
             ))}
-            {pages2.map((page) => (
-              <Link
+            {pages2.map((page, index) => (
+              <Link key={index}
                 to="/market"
                 style={{ textDecoration: "none", color: "white" }}
               >
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               </Link>
             ))}
-            {pages3.map((page) => (
-              <Link
+            {pages3.map((page, index) => (
+              <Link key={index}
                 to="/companies"
                 style={{ textDecoration: "none", color: "white" }}
               >
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               </Link>
             ))}
-            {pages4.map((page) => (
-              <Link
+            {pages4.map((page, index) => (
+              <Link key={index}
                 to="/news"
                 style={{ textDecoration: "none", color: "white" }}
               >
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               </Link>
@@ -218,19 +218,19 @@ export default function Navbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {setting1.map((setting) => (
-                <Link
+              {setting1.map((setting, index) => (
+                <Link key={index}
                   to="/profile"
                   style={{ textDecoration: "none", color: "black" }}
                 >
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <MenuItem onClick={handleCloseUserMenu}>
                     <Typography textAlign="center">{setting}</Typography>
                   </MenuItem>
                 </Link>
               ))}
-              {setting2.map((setting) => (
-                <Link to="/" style={{ textDecoration: "none", color: "black" }}>
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+              {setting2.map((setting, index) => (
+                <Link key={index} to="/" style={{ textDecoration: "none", color: "black" }}>
+                  <MenuItem onClick={handleCloseUserMenu}>
                     <Typography textAlign="center">{setting}</Typography>
                   </MenuItem>
                 </Link>
