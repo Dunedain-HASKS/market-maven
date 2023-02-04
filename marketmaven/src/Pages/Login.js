@@ -111,7 +111,6 @@ const LogInFunction = async (navigate, auth) => {
       })
   ).data;
 
-  const data = await res.data;
   localStorage.setItem("id", data._id);
   console.log(data, localStorage.getItem("id"));
 
