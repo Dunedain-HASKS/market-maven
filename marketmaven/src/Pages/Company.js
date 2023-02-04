@@ -25,7 +25,8 @@ const Company = () => {
       });
   });
 
-  return <>{loading ? "" : `${JSON.stringify(company)}`}</>;
+  return <>{loading ? "" : `${JSON.stringify(company)}`}
+  </>;
 };
 
 export default Company;
