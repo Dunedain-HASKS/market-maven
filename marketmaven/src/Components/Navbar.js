@@ -13,6 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
+import logo from "../Assets/MarketMaven.png";
 
 // const pages = ["Products", "Pricing", "Blog", "Companies"];
 const pages1 = ["Dashboard"];
@@ -46,13 +47,7 @@ export default function Navbar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
-          <img
-            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
-            src="./Assets/MarketMaven.png"
-            alt=""
-            srcset=""
-          />
+          <img src={logo} style={{ width: "70px", height: "70px" }} />
           <Typography
             variant="h6"
             noWrap
@@ -222,7 +217,6 @@ export default function Navbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-            
               {setting1.map((setting) => (
                 <Link
                   to="/profile"

@@ -1,16 +1,18 @@
-import * as React from 'react';
-import { CssVarsProvider, useColorScheme } from '@mui/joy/styles';
-import Sheet from '@mui/joy/Sheet';
-import Typography from '@mui/joy/Typography';
-import FormControl from '@mui/joy/FormControl';
-import FormLabel from '@mui/joy/FormLabel';
-import Input from '@mui/joy/Input';
-import Button from '@mui/joy/Button';
-import Link from '@mui/joy/Link';
-import { useState } from 'react';
-import axios from 'axios';
+import * as React from "react";
+import { CssVarsProvider, useColorScheme } from "@mui/joy/styles";
+import Sheet from "@mui/joy/Sheet";
+import Typography from "@mui/joy/Typography";
+import FormControl from "@mui/joy/FormControl";
+import FormLabel from "@mui/joy/FormLabel";
+import Input from "@mui/joy/Input";
+import Button from "@mui/joy/Button";
+import Link from "@mui/joy/Link";
+import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const navigate = useNavigate();
   const [auth, setAuth] = useState({
     email: "",
     password: "",
@@ -21,12 +23,12 @@ export default function Login() {
         <Sheet
           sx={{
             width: 300,
-            mx: 'auto', 
-            my: 4, 
-            py: 3, 
-            px: 2, 
-            display: 'flex',
-            flexDirection: 'column',
+            mx: "auto",
+            my: 4,
+            py: 3,
+            px: 2,
+            display: "flex",
+            flexDirection: "column",
             gap: 2,
             borderRadius: "sm",
             boxShadow: "md",
@@ -67,7 +69,7 @@ export default function Login() {
             onClick={(e) => {
               e.preventDefault();
               if (ValidateEmail(auth.email)) {
-                LogInFunction(auth);
+                LogInFunction(navigate, auth);
               }
             }}
           >
@@ -94,19 +96,28 @@ function ValidateEmail(mail) {
   return false;
 }
 
-const LogInFunction = async (auth) => {
-  const res = await axios
-    .post("https://azathoth-production.up.railway.app/auth/", {
-      email: auth.email,
-      password: auth.password,
-    })
-    .catch((err) => {
-      alert(err);
-    });
+const LogInFunction = async (navigate, auth) => {
+  const res = (
+    await axios
+      .post("https://azathoth-production.up.railway.app/auth/", {
+        email: auth.email,
+        password: auth.password,
+      })
+      .catch((err) => {
+        alert(err);
+      })
+  ).data;
+
   console.log(res);
   if (res.status === 401) {
     alert(res.message);
     return;
+  }
+  if (res.status === 200) {
+    navigate("/dashboard");
+  }
+  if (res.status === 404) {
+    alert("Please Enter the Password");
   }
 
   const data = await res.data.data;
