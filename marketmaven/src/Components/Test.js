@@ -3,6 +3,7 @@ import axios from "axios";
 import { json, Link } from "react-router-dom";
 import Chart from "./Chart";
 import { baseUrl } from "../shared";
+import { Container } from "@mui/system";
 
 export default function Test() {
   const [stocks, setStocks] = useState();
@@ -64,18 +65,20 @@ export default function Test() {
   return (
     <>
       {/* <h1>{user.funds}</h1> */}
-      <select onChange={select}>
-        {stocks
-          ? stocks.data.map((stock) => {
-              return (
-                <option value={stock._id} key={stock._id}>
-                  {stock.company.name}
-                </option>
-              );
-            })
-          : null}
-      </select>
-      {selected ? <Chart stock={selected} /> : null}
+      <Container style={{ marginTop: "40px" }}>
+        <select onChange={select} styple={{ padding: "10px" }}>
+          {stocks
+            ? stocks.data.map((stock) => {
+                return (
+                  <option value={stock._id} key={stock._id}>
+                    {stock.company.name}
+                  </option>
+                );
+              })
+            : null}
+        </select>
+        {selected ? <Chart stock={selected} /> : null}
+      </Container>
     </>
   );
 }

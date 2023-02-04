@@ -3,11 +3,9 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import Switch from "@mui/material/Switch";
-import { baseUrl } from "../shared";
+import {baseUrl} from "../shared";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { blue, deepPurple } from "@mui/material/colors";
-
+import {useNavigate} from "react-router-dom";
 const style = {
   position: "absolute",
   top: "50%",
@@ -22,7 +20,7 @@ const style = {
   pb: 3,
 };
 
-function ChildModal(props) {
+function ChildModal() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -33,7 +31,7 @@ function ChildModal(props) {
 
   return (
     <React.Fragment>
-      <Button onClick={handleOpen}>{props ? "Buy" : "Sell"}</Button>
+      <Button onClick={handleOpen}>Sell</Button>
       <Modal
         hideBackdrop
         open={open}
@@ -54,38 +52,40 @@ function ChildModal(props) {
 }
 
 export default function NestedModal(props) {
-  const id = localStorage.getItem("id");
-  useEffect(() => {
-    console.log(props);
-  }, []);
+    const id = localStorage.getItem('id');
+    useEffect(()=>{
+      console.log(props);
+    },[]);
 
-  const baseurl = baseUrl;
-  function buy(id, amt, stockid) {
-    const data = { id: id, amount: amt };
-    const url = baseurl + "stocks/" + stockid + "/buy";
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => {
-        if (response.status === 401) {
-          throw new Error("Insufficient Funds");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        //assume the data was added successfully
-        //modal closed
-        //handleClose()
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }
+    const baseurl = baseUrl
+    function sell(id, amt, stockid) {
+        const data = { id : id, amount : amt };
+        const url = baseurl + "stocks/" + stockid + "/sell";
+        fetch(url, {
+          method: "POST",
+          headers :{
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => {
+            if (response.status === 401) {
+              throw new Error("Insufficient Funds");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            //assume the data was added successfully
+            //modal closed
+            //handleClose()
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      }
 
+
+    
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -95,29 +95,18 @@ export default function NestedModal(props) {
   };
 
   const [checked, setChecked] = React.useState(true);
-  const [buyorsell, setBuyOrSell] = React.useState(true);
   const handleChange = (event) => {
-    setBuyOrSell(!buyorsell);
     setChecked(event.target.checked);
   };
   const [show, setShow] = React.useState(false);
 
   const [qty, setQty] = React.useState();
-  const [price, setPrice] = React.useState(
-    props.stock.stock.historic_data[props.stock.stock.historic_data.length - 1]
-      .price.close
-  );
-  const col = deepPurple["A100"];
+  const [price, setPrice] = React.useState(props.stock.stock.historic_data[props.stock.stock.historic_data.length-1].price.close);
+
+
   return (
     <div>
-      <Button
-        onClick={handleOpen}
-        variant="contained"
-        
-        style={{ marginTop: "20px" }}
-      >
-        Buy
-      </Button>
+      <Button onClick={handleOpen}>Sell</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -125,10 +114,10 @@ export default function NestedModal(props) {
         aria-describedby="parent-modal-description"
       >
         <Box sx={{ ...style, width: 400 }}>
-          {(buyorsell)? "Buy" : "Sell"}
+          Sell
               {/* <Switch
                 checked={checked}
-                onChange={buy(id, price, props.stock.stock._id)}
+                onChange={sell(id, price, props.stock.stock._id)}
                 // onChange={handleClose}
 
 
@@ -140,7 +129,7 @@ export default function NestedModal(props) {
               setQty("");
               setPrice("");
             }}
-            id="buy"
+            id="sell"
             className="w-full max-w-sm"
           >
             <div className="md:flex md:items-center mb-6">
@@ -170,31 +159,18 @@ export default function NestedModal(props) {
                   defaultValue={qty}
                   onChange={(e) => {
                     setQty(e.target.value);
-                    setPrice(
-                      e.target.value *
-                        props.stock.stock.historic_data[
-                          props.stock.stock.historic_data.length - 1
-                        ].price.close
-                    );
+                    setPrice(e.target.value * props.stock.stock.historic_data[props.stock.stock.historic_data.length-1].price.close);
                   }}
                 />
                 <h5>
                   Price :{" "}
-                  {props.stock ? (
-                    <p>
-                      {
-                        props.stock.stock.historic_data[
-                          props.stock.stock.historic_data.length - 1
-                        ].price.close
-                      }
-                    </p>
-                  ) : null}
+                  {props.stock ? <p>{props.stock.stock.historic_data[props.stock.stock.historic_data.length-1].price.close}</p> : null}
                 </h5>
                 <h6>Total Amount : {price}</h6>
               </div>
             </div>
           </form>
-          <ChildModal buyorsell={buyorsell} />
+          <ChildModal />
         </Box>
       </Modal>
     </div>

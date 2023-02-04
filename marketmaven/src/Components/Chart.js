@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CanvasJSReact from '../CanvasJS/canvasjs.react';
 import Buy from './Buy';
+import Sell from './Sell';
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
@@ -40,6 +41,7 @@ function Chart(props) {
     </div>
     <div>
       <Buy stock={props}/>
+      <Sell stock={props}/>
     </div>
     </>
   );

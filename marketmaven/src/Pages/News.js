@@ -1,5 +1,5 @@
 import { Container } from "@mui/system";
-import data from "../Data/news.json";
+// import data from "../Data/news.json";
 import { Card } from "@mui/material";
 import CardHeader from "@mui/material/CardHeader";
 import { shadows } from "@mui/system";
