@@ -13,6 +13,7 @@ import Market from "./Pages/Market";
 import Test from "./Components/Test";
 import Chart from "./Components/Chart";
 import { useNavigate } from "react-router-dom";
+import CompanyNews from "./Pages/CompanyNews";
 import About from "./Pages/About";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route exact path="/companies" element={<Companies />} />
           <Route path="/companies/:id" element={<Company />} />
+          <Route path="/companies/:id/news" element={<CompanyNews />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/market" element={<Test />} />
           <Route path="/news" element={<News />} />

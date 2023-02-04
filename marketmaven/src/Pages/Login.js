@@ -13,7 +13,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { baseUrl } from "../shared";
 
-export default function Login() {
+export default function Login({ trigger, setTrigger }) {
   const navigate = useNavigate();
   const [auth, setAuth] = useState({
     email: "",
@@ -71,7 +71,7 @@ export default function Login() {
             onClick={(e) => {
               e.preventDefault();
               if (ValidateEmail(auth.email)) {
-                LogInFunction(navigate, auth);
+                LogInFunction(navigate, auth, trigger, setTrigger);
               }
             }}
           >
@@ -98,11 +98,10 @@ function ValidateEmail(mail) {
   return false;
 }
 
-const LogInFunction = async (navigate, auth) => {
-  
+const LogInFunction = async (navigate, auth, trigger, setTrigger) => {
   const res = (
     await axios
-      .post(baseUrl +"auth/", {
+      .post(baseUrl + "auth/", {
         email: auth.email,
         password: auth.password,
       })
@@ -111,9 +110,8 @@ const LogInFunction = async (navigate, auth) => {
       })
   ).data;
   const data = res.data;
-  
-  
-  if (res.status === 401) {
+
+  if (res.status === 401 || res.status === 404) {
     alert(res.message);
     return;
   }
@@ -121,8 +119,5 @@ const LogInFunction = async (navigate, auth) => {
 
   if (res.status === 200) {
     navigate("/dashboard");
-  }
-  if (res.status === 404) {
-    alert("Please Enter the Password");
   }
 };

@@ -25,50 +25,65 @@ const Companies = () => {
   return (
     <div className="container-fluid mt-2">
       <div className="justify-content-start row row-cols-1 bg-light row-cols-md-3 g-1 p-2">
-        { isLoading ? <Loading />
-          : companies.map((comp, index) => (
+        {isLoading ? (
+          <Loading />
+        ) : (
+          companies.map((comp, index) => (
+            <div
+              className="col"
+              key={index}
+              style={{
+                marginBottom: "25px",
+              }}
+            >
               <div
-                className="col"
-                key={index}
-                style={{
-                  marginBottom: "25px",
-                }}
+                className="card compcard bg-blur text-start bg-light m-2 p-5"
+                style={{ minHeight: "400px" }}
               >
-                <div
-                  className="card compcard bg-blur text-start bg-light m-2 p-5"
-                  style={{ minHeight: "500px" }}
-                >
-                  <div className="card-body">
-                    <img src={comp.logo} style={{width: "130px", height: "100px", marginBottom: "10px"}} />
-                    <h5 className="card-title display-6" style={{height: "150px"}}>{comp.name}</h5>
-                    <h5 className=" compinfo" style={{ color: "green" }}>
-                      {comp.sector}
-                    </h5>
-                    <h5
-                      className="comptick rounded-3"
-                      style={{ color: "purple" }}
-                    >
-                      ${comp.ticker}
-                    </h5>
-                    <Button
-                      onClick={() => {
-                        navigate(`/companies/${comp._id}`);
-                      }}
-                      size="medium"
-                      variant="contained"
-                      style={{
-                        marginTop: "40px",
-                        color: "white",
-                        fontFamily: "Montserrat",
-                      }}
-                    >
-                      More Info
-                    </Button>
-                    {/* </Link> */}
-                  </div>
+                <div className="card-body">
+                  <img
+                    src={comp.logo}
+                    style={{
+                      width: "130px",
+                      height: "100px",
+                      marginBottom: "15px",
+                    }}
+                  />
+                  <h5
+                    className="card-title display-6"
+                    style={{ height: "120px" }}
+                  >
+                    {comp.name}
+                  </h5>
+                  <h5 className=" compinfo" style={{ color: "green" }}>
+                    {comp.sector}
+                  </h5>
+                  <h5
+                    className="comptick rounded-3"
+                    style={{ color: "purple" }}
+                  >
+                    ${comp.ticker}
+                  </h5>
+                  <Button
+                    onClick={() => {
+                      navigate(`/companies/${comp._id}`);
+                    }}
+                    size="medium"
+                    variant="contained"
+                    style={{
+                      marginTop: "20px",
+                      color: "white",
+                      fontFamily: "Montserrat",
+                    }}
+                  >
+                    More Info
+                  </Button>
+                  {/* </Link> */}
                 </div>
               </div>
-            ))}
+            </div>
+          ))
+        )}
       </div>
     </div>
   );
