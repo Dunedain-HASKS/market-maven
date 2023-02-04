@@ -15,8 +15,8 @@ function Chart(props) {
     const fetchedDataPoints = [];
     for (var i = 0; i < props.stock.historic_data.length; i++) {
       fetchedDataPoints.push({
-        x: new Date(props.stock.historic_data[i].date),
-        y: props.stock.historic_data[i].price.close
+        x: new Date(props.stock.historic_data[i]?.date),
+        y: props.stock.historic_data[i]?.price.close
       });
   }setDataPoints(fetchedDataPoints);
   }, [props]);
