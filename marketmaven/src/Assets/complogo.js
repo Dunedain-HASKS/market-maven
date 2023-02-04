@@ -42,7 +42,7 @@ export default {
   "Netflix Inc.": netflix,
   "Texas Instruments": texas,
   "QUALCOMM Inc.": qualcomm,
-  AstraZeneca: astra,
+  "AstraZeneca": astra,
   "Zoom Video Inc.": zoom,
   "Starbucks Corp.": starbucks,
   "Intel Corp.": intel,
