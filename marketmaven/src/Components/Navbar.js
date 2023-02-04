@@ -14,22 +14,19 @@ import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import logo from "../Assets/MarketMaven.png";
 import profile from "../Assets/profile.png";
-import '@fontsource/montserrat';
-import '@fontsource/lato';
-
-// const pages = ["Products", "Pricing", "Blog", "Companies"];
-const pages1 = ["Dashboard"];
-const pages2 = ["Market"];
-const pages3 = ["Companies"];
-const pages4 = ["News"];
-// const settings = ["Profile", "Logout"];
-const setting1 = ["Profile"];
-const setting2 = ["Logout"];
+import "@fontsource/montserrat";
+import "@fontsource/lato";
 
 export default function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
+  const [loggedIn, setLoggedIn] = React.useState(false);
+  React.useEffect(() => {
+    if (localStorage.getItem("id")) {
+      setLoggedIn(true);
+    } else {
+    }
+  });
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -49,7 +46,12 @@ export default function Navbar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <img src={logo} style={{ width: "70px", height: "70px" }} alt="logo" />
+          <img
+            src={logo}
+            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+            style={{ width: "70px", height: "70px" }}
+            alt="logo"
+          />
           <Typography
             variant="h6"
             noWrap
@@ -67,7 +69,6 @@ export default function Navbar() {
           >
             Market Maven
           </Typography>
-
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -97,49 +98,51 @@ export default function Navbar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages1.map((page, index) => (
-                <Link key={index}
-                  to="/dashboard"
+              {loggedIn && (
+                <Link
+                  to={loggedIn ? "/dashboard" : "/"}
                   style={{ textDecoration: "none", color: "black" }}
                 >
                   <MenuItem onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
+                    <Typography textAlign="center">{"Dashboard"}</Typography>
                   </MenuItem>
                 </Link>
-              ))}
-              {pages2.map((page, index) => (
-                <Link key={index}
-                  to="/market"
+              )}
+              {loggedIn && (
+                <Link
+                  to={loggedIn ? "/market" : "/signup"}
                   style={{ textDecoration: "none", color: "black" }}
                 >
                   <MenuItem onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
+                    <Typography textAlign="center">
+                      {loggedIn ? "Market" : "Sign-up"}
+                    </Typography>
                   </MenuItem>
                 </Link>
-              ))}
-              {pages3.map((page, index) => (
-                <Link key={index}
-                  to="/companies"
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  <MenuItem onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
-                  </MenuItem>
-                </Link>
-              ))}
+              )}
+
+              <Link
+                to="/companies"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Companies</Typography>
+                </MenuItem>
+              </Link>
             </Menu>
           </Box>
           {/* <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} /> */}
-          <img
-            className="bg-dark"
-            src="./Assets/MarketMaven.png"
-            alt=""
-          />
+          {/* <img className="bg-dark" src="./Assets/MarketMaven.png" alt="" /> */}
+          {/* <img
+            src={logo}
+            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+            style={{ width: "70px", height: "70px" }}
+            alt="logo"
+          /> */}
           <Typography
             variant="h5"
             noWrap
             component="a"
-            href="./Assets/MarketMaven.png"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -154,89 +157,98 @@ export default function Navbar() {
             Market Maven
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages1.map((page, index) => (
-              <Link key={index}
-                to="/dashboard"
+            {loggedIn && (
+              <Link
+                to={loggedIn ? "/dashboard" : "/"}
                 style={{ textDecoration: "none", color: "white" }}
               >
                 <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center">{"Dashboard"}</Typography>
                 </MenuItem>
               </Link>
-            ))}
-            {pages2.map((page, index) => (
-              <Link key={index}
-                to="/market"
-                style={{ textDecoration: "none", color: "white" }}
-              >
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              </Link>
-            ))}
-            {pages3.map((page, index) => (
-              <Link key={index}
-                to="/companies"
-                style={{ textDecoration: "none", color: "white" }}
-              >
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              </Link>
-            ))}
-            {pages4.map((page, index) => (
-              <Link key={index}
-                to="/news"
-                style={{ textDecoration: "none", color: "white" }}
-              >
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              </Link>
-            ))}
-          </Box>
+            )}
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Log In" src={profile} />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
+            {loggedIn && (
+              <Link
+                to={loggedIn ? "/market" : "/signup"}
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">
+                    {loggedIn ? "Market" : "Sign-up"}
+                  </Typography>
+                </MenuItem>
+              </Link>
+            )}
+            <Link
+              to="/companies"
+              style={{ textDecoration: "none", color: "white" }}
             >
-              {setting1.map((setting, index) => (
-                <Link key={index}
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">Companies</Typography>
+              </MenuItem>
+            </Link>
+            <Link to="/news" style={{ textDecoration: "none", color: "white" }}>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">News</Typography>
+              </MenuItem>
+            </Link>
+          </Box>
+          {loggedIn ? (
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt="Log In" src={profile} />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                <Link
                   to="/profile"
                   style={{ textDecoration: "none", color: "black" }}
                 >
                   <MenuItem onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                    <Typography textAlign="center">Profile</Typography>
                   </MenuItem>
                 </Link>
-              ))}
-              {setting2.map((setting, index) => (
-                <Link key={index} to="/" style={{ textDecoration: "none", color: "black" }}>
+
+                <Link to="/" style={{ textDecoration: "none", color: "black" }}>
                   <MenuItem onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                    <Typography
+                      textAlign="center"
+                      onClick={() => {
+                        localStorage.removeItem("id");
+                        setLoggedIn(false);
+                        console.log("Logged Out");
+                      }}
+                    >
+                      Log out
+                    </Typography>
                   </MenuItem>
                 </Link>
-              ))}
-            </Menu>
-          </Box>
+              </Menu>
+            </Box>
+          ) : (
+            <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">Login</Typography>
+              </MenuItem>
+            </Link>
+          )}
         </Toolbar>
       </Container>
     </AppBar>
