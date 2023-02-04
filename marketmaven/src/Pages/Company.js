@@ -26,7 +26,7 @@ const Company = () => {
       })
       .catch((err) => {
         console.log(err);
-      });
+      },[]);
   });
 
   return (
@@ -71,9 +71,9 @@ const Company = () => {
                   <div className="d-flex justify-content-center mb-2">
                     <Button
                       variant="contained"
-                      // onClick={() => {
-                      //   navigate("/companies ");
-                      // }}
+                      onClick={() => {
+                        navigate(`/companies/${company._id}/news`);
+                      }}
                     >
                       News
                     </Button>{" "}
