@@ -82,7 +82,7 @@ const Company = () => {
                   </div>
                   <div className="col-sm-9">
                     <p className="card-text text-muted">
-                      {company.ipo.substring(0, 10)}
+                      {String(company.ipo).substring(0, 10)}
                     </p>
                   </div>
                 </div>
@@ -90,7 +90,9 @@ const Company = () => {
                   <div className="col-sm-3">
                     <p className="card-text">Company site</p>
                   </div>
-                  <div className="col-sm-9"></div>
+                  <div className="col-sm-9">
+                    <a href="{company.weburl}">{company.weburl}</a>
+                  </div>
                 </div>
               </div>
             </div>

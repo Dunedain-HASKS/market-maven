@@ -124,14 +124,19 @@ async function signUpFunction(user, navigate) {
       })
   ).data;
 
+  const data = await res.data;
+  localStorage.setItem("id", data._id);
+  console.log(data, localStorage.getItem("id"));
+
   if (res.status === 401) {
+    alert(res.message);
+    return;
+  }
+  if (res.status === 404) {
     alert(res.message);
     return;
   }
   if (res.status === 200) {
     navigate("/");
   }
-  const data = await res.data;
-
-  localStorage.setItem("id", data._id);
 }
