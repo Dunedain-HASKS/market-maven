@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { json, Link } from "react-router-dom";
-import Chart from "../Pages/dashboard/Chart";
+import Chart from "./Chart";
 
 export default function Test() {
   const [stocks, setStocks] = useState();
@@ -9,6 +9,7 @@ export default function Test() {
   const [chart, setChart] = useState();
 
   const baseurl = "https://azathoth-production.up.railway.app/";
+  
   useEffect(() => {
     // axios.get(url).then((response) => {
     //   setStocks(response.data);
@@ -41,19 +42,28 @@ export default function Test() {
     console.log(c);
 
     setSelected(c);
-    axios
-      .get(
-        baseurl + '/stocks' + c.id
-      )
-      .then((response) => {
-        setChart(response.data);
-        console.log(chart);
-      });
+    // axios
+    //   .get(
+    //     baseurl + '/stocks' + c.id
+    //   )
+    //   .then((response) => {
+    //     setChart(response.data);
+    //     console.log(chart);
+    //   });
   }
+  const id = localStorage.getItem('id');
+  const [user,setUser] = useState();
+  useEffect(()=>{
+    fetch(baseurl + 'user/', {
+        body: id
+    }).then((response)=> response.json).then((data)=>{
+        setUser(data);
+    })
+  })
 
   return (
     <>
-      <h1>Test</h1>
+      <h1>{user.funds}</h1>
       <select onChange={select}>
         {stocks
           ? stocks.data.map((stock) => {

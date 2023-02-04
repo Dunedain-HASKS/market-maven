@@ -1,16 +1,18 @@
-import * as React from 'react';
-import { CssVarsProvider, useColorScheme } from '@mui/joy/styles';
-import Sheet from '@mui/joy/Sheet';
-import Typography from '@mui/joy/Typography';
-import FormControl from '@mui/joy/FormControl';
-import FormLabel from '@mui/joy/FormLabel';
-import Input from '@mui/joy/Input';
-import Button from '@mui/joy/Button';
-import Link from '@mui/joy/Link';
-import { useState } from 'react';
-import axios from 'axios';
+import * as React from "react";
+import { CssVarsProvider, useColorScheme } from "@mui/joy/styles";
+import Sheet from "@mui/joy/Sheet";
+import Typography from "@mui/joy/Typography";
+import FormControl from "@mui/joy/FormControl";
+import FormLabel from "@mui/joy/FormLabel";
+import Input from "@mui/joy/Input";
+import Button from "@mui/joy/Button";
+import Link from "@mui/joy/Link";
+import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -81,7 +83,7 @@ export default function SignUp() {
             onClick={(e) => {
               e.preventDefault();
               if (ValidateEmail(user.email)) {
-                signUpFunction(user);
+                signUpFunction(user, navigate);
               }
             }}
           >
@@ -109,7 +111,7 @@ function ValidateEmail(mail) {
   return false;
 }
 
-async function signUpFunction(user) {
+async function signUpFunction(user, navigate) {
   const res = (
     await axios
       .post("https://azathoth-production.up.railway.app/user/", {
@@ -121,9 +123,13 @@ async function signUpFunction(user) {
         alert(err);
       })
   ).data;
+
   if (res.status === 401) {
     alert(res.message);
     return;
+  }
+  if (res.status === 200) {
+    navigate("/");
   }
   const data = await res.data;
 

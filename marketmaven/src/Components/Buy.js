@@ -52,7 +52,44 @@ function ChildModal(props) {
   );
 }
 
+
 export default function NestedModal(props) {
+    const id = localStorage.getItem('id');
+    React.useEffect(()=>{
+        console.log(props.stock.stock._id);
+        // console.log(price);
+        // console.log(id);
+    })
+
+    const baseUrl = "https://azathoth-production.up.railway.app/"
+    function buy(id, amt, stockid) {
+        const data = { id : id, amount : amt };
+        const url = baseUrl + "stocks/" + stockid + "/buy";
+        fetch(url, {
+          method: "POST",
+          headers :{
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => {
+            if (response.status === 401) {
+              throw new Error("Insufficient Funds");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            //assume the data was added successfully
+            //modal closed
+            //handleClose()
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      }
+
+
+    
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -70,7 +107,7 @@ export default function NestedModal(props) {
   const [show, setShow] = React.useState(false);
 
   const [qty, setQty] = React.useState();
-  const [price, setPrice] = React.useState(props.stock.current_price);
+  const [price, setPrice] = React.useState(props.stock.stock.historic_data[props.stock.stock.historic_data.length-1].price.close);
 
 
   return (
@@ -86,7 +123,10 @@ export default function NestedModal(props) {
           {(buyorsell)? "Buy" : "Sell"}
               <Switch
                 checked={checked}
-                onChange={handleChange}
+                onChange={buy(id, price, props.stock.stock._id)}
+                // onChange={handleClose}
+
+
                 inputProps={{ "aria-label": "controlled" }}
               />
           <form
@@ -104,7 +144,7 @@ export default function NestedModal(props) {
                   className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
                   for="qty"
                 >
-                  Name : {props.stock.name}
+                  Name : {props.stock.stock.company.name}
                 </label>
               </div>
               <div className="md:w-1/3">
@@ -125,12 +165,12 @@ export default function NestedModal(props) {
                   defaultValue={qty}
                   onChange={(e) => {
                     setQty(e.target.value);
-                    setPrice(e.target.value * props.stock.current_price);
+                    setPrice(e.target.value * props.stock.stock.historic_data[props.stock.stock.historic_data.length-1].price.close);
                   }}
                 />
                 <h5>
                   Price :{" "}
-                  {props.stock ? <p>{props.stock.current_price}</p> : null}
+                  {props.stock ? <p>{props.stock.stock.historic_data[props.stock.stock.historic_data.length-1].price.close}</p> : null}
                 </h5>
                 <h6>Total Amount : {price}</h6>
               </div>

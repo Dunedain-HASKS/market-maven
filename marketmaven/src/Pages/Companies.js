@@ -2,10 +2,20 @@ import data from "../Data/companies.json";
 import imgs from "../Assets/complogo.js";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-import Company from "./Company";
-
-
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useState, useEffect } from "react";
 const Companies = () => {
+  // const [companies,useCompanies] = useState([]);
+  // useEffect(async () => {
+  //   const res = await axios.get(
+  //     `https://azathoth-production.up.railway.app/companies`
+  //   );
+  //   console.log(res);
+  //   // useCompanies(data);
+  // });
+
+  const navigate = useNavigate();
   return (
     <div className="container-fluid mt-2">
       <div className="justify-content-start row row-cols-1 bg-light row-cols-md-3 g-1 p-2">
@@ -21,19 +31,23 @@ const Companies = () => {
                 <h5 className="comptick rounded-3" style={{ color: "purple" }}>
                   ${comp.ticker}
                 </h5>
-                <Link to={`/companies/${Company._id}`}>
-                  <Button
-                    size="medium"
-                    variant="contained"
-                    style={{
-                      marginTop: "40px",
-                      color: "white",
-                      fontFamily: "Montserrat",
-                    }}
-                  >
-                    More Info
-                  </Button>
-                </Link>
+                {/* <Link to={`/companies/${Company._id}`}> */}
+                <Button
+                  onClick={() => {
+                    // navigate(`/companies/${comp._id}`);
+                    navigate("/company");
+                  }}
+                  size="medium"
+                  variant="contained"
+                  style={{
+                    marginTop: "40px",
+                    color: "white",
+                    fontFamily: "Montserrat",
+                  }}
+                >
+                  More Info
+                </Button>
+                {/* </Link> */}
               </div>
             </div>
           </div>

@@ -11,8 +11,9 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
+import logo from "../Assets/MarketMaven.png";
+import profile from "../Assets/profile.png";
 
 // const pages = ["Products", "Pricing", "Blog", "Companies"];
 const pages1 = ["Dashboard"];
@@ -46,12 +47,7 @@ export default function Navbar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
-          <img
-            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
-            src="./Assets/MarketMaven.png"
-            alt=""
-          />
+          <img src={logo} style={{ width: "70px", height: "70px" }} alt="logo" />
           <Typography
             variant="h6"
             noWrap
@@ -201,7 +197,7 @@ export default function Navbar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Log In" src={profile} />
               </IconButton>
             </Tooltip>
             <Menu
@@ -220,7 +216,6 @@ export default function Navbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-            
               {setting1.map((setting, index) => (
                 <Link key={index}
                   to="/profile"
