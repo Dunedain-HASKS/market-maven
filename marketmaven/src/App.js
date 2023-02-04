@@ -10,6 +10,7 @@ import Companies from "./Pages/Companies";
 import News from "./Pages/News";
 
 import Market from "./Pages/Market";
+import Test from "./Components/Test";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/news" element={<News />} />
           <Route path="/market" element={<Market  />} />
           <Route path="/news" element={<News />}  />
+          <Route path="/test" element={<Test/>}/>
           <Route path="*" element={<Error404 />} />
         </Routes>
       </HashRouter>

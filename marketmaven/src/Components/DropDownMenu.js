@@ -20,6 +20,7 @@ export default function DropdownMenu() {
 
   function select(e) {
     const c = stocks?.find((x) => x.id === e.target.value);
+    console.log(stocks);
     setSelected(c);
     axios
       .get(
