@@ -29,7 +29,7 @@ function App() {
           <Route path="/market" element={<Test />} />
           <Route path="/news" element={<News />} />
           <Route path="/test" element={<Test />} />
-          <Route path="/chart" element={<Chart/>}/>
+          <Route path="/chart" element={<Chart />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
       </HashRouter>
