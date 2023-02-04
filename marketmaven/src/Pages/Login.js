@@ -6,7 +6,8 @@ import FormControl from '@mui/joy/FormControl';
 import FormLabel from '@mui/joy/FormLabel';
 import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
-import Link from '@mui/joy/Link';
+// import Link from '@mui/joy/Link';
+import { Link } from 'react-router-dom'; 
 import { useState } from 'react';
 import axios from 'axios';
 // function ModeToggle() {
@@ -88,7 +89,7 @@ export default function Login() {
           <Button sx={{ mt: 1 /* margin top */ }}
             onClick={(e) => { e.preventDefault(); LogInFunction(auth); }}>Log in</Button>
           <Typography
-            endDecorator={<Link href="/#/signup">Sign up</Link>}
+            endDecorator={<Link to="/signup">Sign up</Link>}
             fontSize="sm"
             sx={{ alignSelf: 'center' }}
           >

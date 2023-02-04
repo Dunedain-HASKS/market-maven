@@ -9,27 +9,21 @@ function Chart(props) {
   const [dataPoints, setDataPoints] = useState([]);
 
   useEffect(() => {
-    fetch('https://canvasjs.com/data/gallery/react/nifty-stock-price.json')
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(data) {
-      const fetchedDataPoints = [];
-      for (var i = 0; i < data.length; i++) {
-        fetchedDataPoints.push({
-          x: new Date(data[i].x),
-          y: data[i].y
-        });
-      }
-      setDataPoints(fetchedDataPoints);
-    });
     console.log(props);
+    
+  //   const fetchedDataPoints = [];
+  //   for (var i = 0; i < data.length; i++) {
+  //     fetchedDataPoints.push({
+  //       x: new Date(data[i].x),
+  //       y: data[i].y
+  //     });
+  // }setDataPoints(fetchedDataPoints);
   }, []);
 
   const options = {
     theme: "light2",
     title: {
-      text: props ? props.stock.name : null
+      text: props ? props.stock.company.name : null
     },
     data: [{
       type: "line",
@@ -45,7 +39,7 @@ function Chart(props) {
       <CanvasJSChart options={options} />
     </div>
     <div>
-      <Buy stock={props.stock} price={props.chart}/>
+      <Buy stock={props}/>
     </div>
     </>
   );
