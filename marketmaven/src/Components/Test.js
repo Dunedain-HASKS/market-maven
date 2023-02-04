@@ -9,7 +9,6 @@ export default function Test() {
   const [chart, setChart] = useState();
 
   const baseurl = "https://azathoth-production.up.railway.app/";
-  
   useEffect(() => {
     // axios.get(url).then((response) => {
     //   setStocks(response.data);
@@ -42,14 +41,14 @@ export default function Test() {
     console.log(c);
 
     setSelected(c);
-    // axios
-    //   .get(
-    //     baseurl + '/stocks' + c.id
-    //   )
-    //   .then((response) => {
-    //     setChart(response.data);
-    //     console.log(chart);
-    //   });
+    axios
+      .get(
+        baseurl + '/stocks' + c.id
+      )
+      .then((response) => {
+        setChart(response.data);
+        console.log(chart);
+      });
   }
   const id = localStorage.getItem('id');
   const [user,setUser] = useState();
@@ -75,7 +74,7 @@ export default function Test() {
             })
           : null}
       </select>
-      {selected ? <Chart stock={selected}/> : null}
+      {selected ? <Chart stock={selected} /> : null}
     </>
   );
 }

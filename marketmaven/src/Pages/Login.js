@@ -100,7 +100,7 @@ function ValidateEmail(mail) {
 const LogInFunction = async (navigate, auth) => {
   const res = (
     await axios
-      .post("https://azathoth-production.up.railway.app/auth/", {
+      .post("https://https://azathoth.onrender.com//auth/", {
         email: auth.email,
         password: auth.password,
       })
