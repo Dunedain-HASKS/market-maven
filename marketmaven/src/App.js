@@ -23,12 +23,12 @@ function App() {
           <Route path="/dashboard" element={<DashBoard />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/companies" element={<Companies />} />
-          <Route path="/companies/:id" element={<Company />} />
+          <Route path="/company" element={<Company />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/news" element={<News />} />
           <Route path="/market" element={<Market />} />
           <Route path="/news" element={<News />} />
-          <Route path="/test" element={<Test/>}/>
+          <Route path="/test" element={<Test />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
       </HashRouter>

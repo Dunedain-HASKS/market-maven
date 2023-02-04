@@ -14,6 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
 import logo from "../Assets/MarketMaven.png";
+import profile from "../Assets/profile.png";
 
 // const pages = ["Products", "Pricing", "Blog", "Companies"];
 const pages1 = ["Dashboard"];
@@ -198,7 +199,7 @@ export default function Navbar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Log In" src={profile} />
               </IconButton>
             </Tooltip>
             <Menu
