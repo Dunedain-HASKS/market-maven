@@ -6,6 +6,7 @@ import { Button } from "@mui/material";
 import { baseUrl } from "../shared";
 export default function Profile() {
   const [data, setData] = useState({
+    name: "",
     active_schemes: [],
     email: "",
     funds: 0,
@@ -89,7 +90,7 @@ export default function Profile() {
                   <p className="card-text">Net worth</p>
                 </div>
                 <div className="col-sm-9">
-                  <p className="card-text text-muted">{data.net_worth}</p>
+                  <p className="card-text text-muted">{data.net_worth.length ? (data.net_worth[data.net_worth.length - 1].value): ""}</p>
                 </div>
               </div>
               <div className="row mt-3">
