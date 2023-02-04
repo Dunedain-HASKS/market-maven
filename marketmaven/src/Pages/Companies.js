@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 // import data from "../Data/companies.json";
 // import imgs from "../Assets/complogo.js";
 import Button from "@mui/material/Button";
@@ -38,8 +39,8 @@ const Companies = () => {
                   style={{ minHeight: "500px" }}
                 >
                   <div className="card-body">
-                    <img src={comp.logo} width="130px" height="100px" />
-                    <h5 className="card-title display-6">{comp.name}</h5>
+                    <img src={comp.logo} style={{width: "130px", height: "100px", marginBottom: "10px"}} />
+                    <h5 className="card-title display-6" style={{height: "150px"}}>{comp.name}</h5>
                     <h5 className=" compinfo" style={{ color: "green" }}>
                       {comp.sector}
                     </h5>
