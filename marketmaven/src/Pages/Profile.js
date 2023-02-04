@@ -124,7 +124,7 @@ export default function Profile() {
                             aria-valuenow="80"
                             aria-valuemin="0"
                             aria-valuemax="100"
-                            style={{ width: "80%" }}
+                            style={{ width: "62%" }}
                           ></div>
                         </div>
                         <p className="card-text mb-2 mt-3">ONGC</p>
@@ -135,13 +135,13 @@ export default function Profile() {
                             aria-valuenow="80"
                             aria-valuemin="0"
                             aria-valuemax="100"
-                            style={{ width: "80%" }}
+                            style={{ width: "50%" }}
                           ></div>
                         </div>
                         <p className="card-text mb-2 mt-3">SBIN </p>
                         <div className="progress rounded">
                           <div
-                            className="progress-bar bg-success"
+                            className="progress-bar bg-dark"
                             role="progressbar"
                             aria-valuenow="80"
                             aria-valuemin="0"
@@ -157,7 +157,7 @@ export default function Profile() {
                             aria-valuenow="80"
                             aria-valuemin="0"
                             aria-valuemax="100"
-                            style={{ width: "80%" }}
+                            style={{ width: "43%" }}
                           ></div>
                         </div>
                         <p className="card-text mb-2 mt-3">Nifty Bees </p>
@@ -168,7 +168,7 @@ export default function Profile() {
                             aria-valuenow="80"
                             aria-valuemin="0"
                             aria-valuemax="100"
-                            style={{ width: "80%" }}
+                            style={{ width: "85%" }}
                           ></div>
                         </div>
                         <div
@@ -198,18 +198,18 @@ export default function Profile() {
                             aria-valuenow="80"
                             aria-valuemin="0"
                             aria-valuemax="100"
-                            style={{ width: "80%" }}
+                            style={{ width: "70%" }}
                           ></div>
                         </div>
                         <p className="card-text mb-2 mt-3">ONGC</p>
                         <div className="progress rounded">
                           <div
-                            className="progress-bar"
+                            className="progress-bar bg-dark"
                             role="progressbar"
                             aria-valuenow="80"
                             aria-valuemin="0"
                             aria-valuemax="100"
-                            style={{ width: "80%", backgroundColor: "#ba03fc" }}
+                            style={{ width: "35%" }}
                           ></div>
                         </div>
                         <p className="card-text mb-2 mt-3">SBIN </p>
@@ -220,7 +220,7 @@ export default function Profile() {
                             aria-valuenow="80"
                             aria-valuemin="0"
                             aria-valuemax="100"
-                            style={{ width: "80%" }}
+                            style={{ width: "62%" }}
                           ></div>
                         </div>
                         <p className="card-text mb-2 mt-3">HDFC </p>
@@ -242,7 +242,7 @@ export default function Profile() {
                             aria-valuenow="80"
                             aria-valuemin="0"
                             aria-valuemax="100"
-                            style={{ width: "80%" }}
+                            style={{ width: "75%" }}
                           ></div>
                         </div>
                         <div
