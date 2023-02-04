@@ -19,6 +19,12 @@ const keys = [
   "netProfitMarginAnnual",
   "revenuePerShareAnnual",
 ];
+
+const stringParser = (text) => {
+  const result = text.replace(/([A-Z])/g, " $1");
+  return result.charAt(0).toUpperCase() + result.slice(1);
+};
+
 const Company = () => {
   const { id } = useParams();
   const [company, setCompany] = useState({});
@@ -130,17 +136,19 @@ const Company = () => {
                   </div>
                   <div className="row mt-3">
                     <div className="col-sm-3">
-                      <p className="card-text">Financialsq</p>
+                      <p className="card-text">Financials</p>
                     </div>
-
                     <div className="col-sm-9">
                       {keys.map((key) => {
                         return (
-                          <div className="row mt-3" key={key}>
-                            <div className="col-sm-3">
-                              <p className="card-text">{key}</p>
+                          <div className="row mb-4" key={key}>
+                            <div className="col-sm-8">
+                              {//const result = text.replace(/([A-Z])/g, " $1");
+//const finalResult = result.charAt(0).toUpperCase() + result.slice(1);
+}
+                              <p className="card-text">{stringParser(key)}</p>
                             </div>
-                            <div className="col-sm-9">
+                            <div className="col-sm-4">
                               <p className="card-text text-muted">
                                 {company.financials[0][key]}
                               </p>
