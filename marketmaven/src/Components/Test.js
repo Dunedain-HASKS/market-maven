@@ -4,11 +4,14 @@ import { json, Link } from "react-router-dom";
 import Chart from "./Chart";
 import { baseUrl } from "../shared";
 import { Container } from "@mui/system";
+import { Loading } from "./Loading";
 
 export default function Test() {
   const [stocks, setStocks] = useState();
   const [selected, setSelected] = useState();
   const [chart, setChart] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+
 
   const baseurl = baseUrl;
 
@@ -29,6 +32,7 @@ export default function Test() {
         if (!response.ok) {
           throw new Error("Something went wrong");
         }
+        setIsLoading(false);
         return response.json();
       })
       .then((data) => {
@@ -64,8 +68,9 @@ export default function Test() {
 
   return (
     <>
-      {/* <h1>{user.funds}</h1> */}
-      <Container style={{ marginTop: "40px" }}>
+    {isLoading ? (<Loading />) :
+
+      (<Container style={{ marginTop: "40px" }}>
         <select onChange={select} styple={{ padding: "10px" }}>
           {stocks
             ? stocks.data.map((stock) => {
@@ -78,7 +83,8 @@ export default function Test() {
             : null}
         </select>
         {selected ? <Chart stock={selected} /> : null}
-      </Container>
+      </Container>)
+}
     </>
   );
 }

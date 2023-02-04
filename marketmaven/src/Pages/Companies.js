@@ -5,25 +5,26 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Loading } from "../Components/Loading";
 const Companies = () => {
   const navigate = useNavigate();
   const [companies, setCompanies] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     const res = axios
       .get(`https://azathoth.onrender.com/companies`)
       .then((res) => {
         console.log(res.data.data);
         setCompanies(res.data.data);
-        setLoading(false);
+        setIsLoading(false);
       });
   });
 
   return (
     <div className="container-fluid mt-2">
       <div className="justify-content-start row row-cols-1 bg-light row-cols-md-3 g-1 p-2">
-        {loading
-          ? ""
+        { isLoading ? <Loading />
           : companies.map((comp, index) => (
               <div
                 className="col"
