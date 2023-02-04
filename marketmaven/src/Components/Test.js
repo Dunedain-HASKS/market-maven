@@ -54,7 +54,7 @@ export default function Test() {
     fetch(baseurl + `user/${id}`, {
       method: "GET",
     })
-      .then((response) => response.json)
+      .then((response) => response.json())
       .then((data) => {
         setUser(data);
       });

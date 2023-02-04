@@ -4,10 +4,8 @@ import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import Switch from "@mui/material/Switch";
 import {baseUrl} from "../shared";
-
-
-
-
+import { useEffect } from "react";
+import {useNavigate} from "react-router-dom";
 const style = {
   position: "absolute",
   top: "50%",
@@ -53,15 +51,11 @@ function ChildModal(props) {
   );
 }
 
-
 export default function NestedModal(props) {
     const id = localStorage.getItem('id');
-    React.useEffect(()=>{
-        // console.log(props.stock.stock._id);
-        // console.log(price);
-        // console.log(id);
-        console.log(props);
-    })
+    useEffect(()=>{
+      console.log(props);
+    },[]);
 
     const baseurl = baseUrl
     function buy(id, amt, stockid) {
@@ -144,7 +138,7 @@ export default function NestedModal(props) {
               <div className="md:w-1/3">
                 <label
                   className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-                  for="qty"
+                  htmlFor="qty"
                 >
                   Name : {props.stock.stock.company.name}
                 </label>
@@ -152,7 +146,7 @@ export default function NestedModal(props) {
               <div className="md:w-1/3">
                 <label
                   className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-                  for="qty"
+                  htmlFor="qty"
                 >
                   Qty.
                 </label>
@@ -178,7 +172,6 @@ export default function NestedModal(props) {
               </div>
             </div>
           </form>
-
           <ChildModal buyorsell={buyorsell}/>
         </Box>
       </Modal>

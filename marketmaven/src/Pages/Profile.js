@@ -22,7 +22,7 @@ export default function Profile() {
     })
       .then((response) => response.json())
       .then((data) => {
-        setData(data);
+        setData(data.data);
         console.log(data);
       });
 
@@ -65,7 +65,7 @@ export default function Profile() {
                   <p className="card-text">Full Name</p>
                 </div>
                 <div className="col-sm-9">
-                  <p className="card-text text-muted">data.name</p>
+                  <p className="card-text text-muted">{data.name}</p>
                 </div>
               </div>
               <div className="row mt-3">
@@ -73,7 +73,7 @@ export default function Profile() {
                   <p className="card-text">Email</p>
                 </div>
                 <div className="col-sm-9">
-                  <p className="card-text text-muted">data.email</p>
+                  <p className="card-text text-muted">{data.email}</p>
                 </div>
               </div>
               <div className="row mt-3">
