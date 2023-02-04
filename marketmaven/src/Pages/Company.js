@@ -74,88 +74,94 @@ const Company = () => {
                   >
                     <div
                       className="d-flex justify-content-center mb-2"
-                      style={{ marginRight: "10px" }}
-                    >
-                      Go Back
-                  
-                  </div>
-                  <div className="d-flex justify-content-center mb-2">
-                    <Button
-                      variant="contained"
-                      onClick={() => {
-                        navigate(`/companies/${company._id}/news`);
-                      }}
-                    >
-                      News
-                    </Button>{" "}
+                      style={{ marginRight: "10px" }}>
+                      <Button
+                        variant="contained"
+                        onClick={() => {
+                          navigate(`/companies`);
+                        }}
+                      >
+                        Go Back
+                      </Button>{" "}
+                    </div>
+                    <div className="d-flex justify-content-center mb-2">
+                      <Button
+                        variant="contained"
+                        onClick={() => {
+                          navigate(`/companies/${company._id}/news`);
+                        }}
+                      >
+                        News
+                      </Button>{" "}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="col-lg-8">
-              <div className="card mb-4">
-                <div
-                  className="card-body"
-                  style={{ boxShadow: "5px 10px 5px lightGray" }}
-                >
-                  <div className="row">
-                    <div className="col-sm-3">
-                      <p className="card-text">Country</p>
+              <div className="col-lg-8">
+                <div className="card mb-4">
+                  <div
+                    className="card-body"
+                    style={{ boxShadow: "5px 10px 5px lightGray" }}
+                  >
+                    <div className="row">
+                      <div className="col-sm-3">
+                        <p className="card-text">Country</p>
+                      </div>
+                      <div className="col-sm-9">
+                        <p className="card-text text-muted">{company.country}</p>
+                      </div>
                     </div>
-                    <div className="col-sm-9">
-                      <p className="card-text text-muted">{company.country}</p>
+                    <div className="row mt-3">
+                      <div className="col-sm-3">
+                        <p className="card-text">Ticker</p>
+                      </div>
+                      <div className="col-sm-9">
+                        <p className="card-text text-muted">${company.ticker}</p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="row mt-3">
-                    <div className="col-sm-3">
-                      <p className="card-text">Ticker</p>
+                    <div className="row mt-3">
+                      <div className="col-sm-3">
+                        <p className="card-text">ipo released</p>
+                      </div>
+                      <div className="col-sm-9">
+                        <p className="card-text text-muted">
+                          {String(company.ipo).substring(0, 10)}
+                        </p>
+                      </div>
                     </div>
-                    <div className="col-sm-9">
-                      <p className="card-text text-muted">${company.ticker}</p>
+                    <div className="row mt-3">
+                      <div className="col-sm-3">
+                        <p className="card-text">Company site</p>
+                      </div>
+                      <div className="col-sm-9">
+                        <a href={company.weburl} target="_blank">
+                          {company.weburl}
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                  <div className="row mt-3">
-                    <div className="col-sm-3">
-                      <p className="card-text">ipo released</p>
-                    </div>
-                    <div className="col-sm-9">
-                      <p className="card-text text-muted">
-                        {String(company.ipo).substring(0, 10)}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="row mt-3">
-                    <div className="col-sm-3">
-                      <p className="card-text">Company site</p>
-                    </div>
-                    <div className="col-sm-9">
-                      <a href={company.weburl} target="_blank">
-                        {company.weburl}
-                      </a>
-                    </div>
-                  </div>
-                  <div className="row mt-3">
-                    <div className="col-sm-3">
-                      <p className="card-text">Financials</p>
-                    </div>
-                    <div className="col-sm-9">
-                      {keys.map((key) => {
-                        return (
-                          <div className="row mb-4" key={key}>
-                            <div className="col-sm-8">
-                              {//const result = text.replace(/([A-Z])/g, " $1");
-//const finalResult = result.charAt(0).toUpperCase() + result.slice(1);
-}
-                              <p className="card-text">{stringParser(key)}</p>
+                    <div className="row mt-3">
+                      <div className="col-sm-3">
+                        <p className="card-text">Financials</p>
+                      </div>
+                      <div className="col-sm-9">
+                        {keys.map((key) => {
+                          return (
+                            <div className="row mb-4" key={key}>
+                              <div className="col-sm-8">
+                                {//const result = text.replace(/([A-Z])/g, " $1");
+                                  //const finalResult = result.charAt(0).toUpperCase() + result.slice(1);
+                                }
+                                <p className="card-text">{stringParser(key)}</p>
+                              </div>
+                              <div className="col-sm-4">
+                                <p className="card-text text-muted">
+                                  {company.financials[0][key]}
+                                </p>
+                              </div>
                             </div>
-                            <div className="col-sm-4">
-                              <p className="card-text text-muted">
-                                {company.financials[0][key]}
-                              </p>
-                            </div>
-                          </div>
-                        );
-                      })}
+                          );
+                        })}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -163,8 +169,8 @@ const Company = () => {
             </div>
           </div>
         </div>
-        </div>
-        )}
+      )
+      }
     </>
   );
 };
