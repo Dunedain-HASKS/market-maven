@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/market-maven/static/css/main.e822755f.css",
-    "main.js": "/market-maven/static/js/main.203125d8.js",
+    "main.js": "/market-maven/static/js/main.f1a1986d.js",
     "static/media/Harshal.JPG": "/market-maven/static/media/Harshal.99cd7bd5ad5fbe435d15.JPG",
     "static/media/Error404.png": "/market-maven/static/media/Error404.a2e6014226461f4f41a8.png",
     "static/media/Shivang.png": "/market-maven/static/media/Shivang.a4ac1f734b5432c54ac4.png",
@@ -71,10 +71,10 @@
     "static/media/roboto-greek-ext-700-normal.woff2": "/market-maven/static/media/roboto-greek-ext-700-normal.bd9854c751441ccc1a70.woff2",
     "index.html": "/market-maven/index.html",
     "main.e822755f.css.map": "/market-maven/static/css/main.e822755f.css.map",
-    "main.203125d8.js.map": "/market-maven/static/js/main.203125d8.js.map"
+    "main.f1a1986d.js.map": "/market-maven/static/js/main.f1a1986d.js.map"
   },
   "entrypoints": [
     "static/css/main.e822755f.css",
-    "static/js/main.203125d8.js"
+    "static/js/main.f1a1986d.js"
   ]
 }
