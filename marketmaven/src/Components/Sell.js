@@ -3,9 +3,9 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import Switch from "@mui/material/Switch";
-import {baseUrl} from "../shared";
+import { baseUrl } from "../shared";
 import { useEffect } from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const style = {
   position: "absolute",
   top: "50%",
@@ -20,12 +20,13 @@ const style = {
   pb: 3,
 };
 
-function ChildModal() {
+function ChildModal(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
+    props.sellfunc(props.id, props.amount, props.stockid);
     setOpen(false);
   };
 
@@ -52,40 +53,40 @@ function ChildModal() {
 }
 
 export default function NestedModal(props) {
-    const id = localStorage.getItem('id');
-    useEffect(()=>{
-      console.log(props);
-    },[]);
+  const id = localStorage.getItem('id');
+  useEffect(() => {
+    console.log(props);
+  }, []);
 
-    const baseurl = baseUrl
-    function sell(id, amt, stockid) {
-        const data = { id : id, amount : amt };
-        const url = baseurl + "stocks/" + stockid + "/sell";
-        fetch(url, {
-          method: "POST",
-          headers :{
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        })
-          .then((response) => {
-            if (response.status === 401) {
-              throw new Error("Insufficient Funds");
-            }
-            return response.json();
-          })
-          .then((data) => {
-            //assume the data was added successfully
-            //modal closed
-            //handleClose()
-          })
-          .catch((e) => {
-            console.log(e);
-          });
-      }
+  const baseurl = baseUrl
+  function sell(id, amt, stockid) {
+    const data = { id: id, amount: amt };
+    const url = baseurl + "stocks/" + stockid + "/sell";
+    fetch(url, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (response.status === 401) {
+          alert("Insufficient holdings");
+          return;
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        handleClose();
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
 
 
-    
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -101,7 +102,7 @@ export default function NestedModal(props) {
   const [show, setShow] = React.useState(false);
 
   const [qty, setQty] = React.useState();
-  const [price, setPrice] = React.useState(props.stock.stock.historic_data[props.stock.stock.historic_data.length-1].price.close);
+  const [amount, setAmount] = React.useState(props.stock.stock.historic_data[props.stock.stock.historic_data.length - 1].price.close);
 
 
   return (
@@ -115,7 +116,7 @@ export default function NestedModal(props) {
       >
         <Box sx={{ ...style, width: 400 }}>
           Sell
-              {/* <Switch
+          {/* <Switch
                 checked={checked}
                 onChange={sell(id, price, props.stock.stock._id)}
                 // onChange={handleClose}
@@ -127,7 +128,7 @@ export default function NestedModal(props) {
             onSubmit={(e) => {
               e.preventDefault();
               setQty("");
-              setPrice("");
+              setAmount("");
             }}
             id="sell"
             className="w-full max-w-sm"
@@ -159,18 +160,18 @@ export default function NestedModal(props) {
                   defaultValue={qty}
                   onChange={(e) => {
                     setQty(e.target.value);
-                    setPrice(e.target.value * props.stock.stock.historic_data[props.stock.stock.historic_data.length-1].price.close);
+                    setAmount(e.target.value * props.stock.stock.historic_data[props.stock.stock.historic_data.length - 1].price.close);
                   }}
                 />
                 <h5>
                   Price :{" "}
-                  {props.stock ? <p>{props.stock.stock.historic_data[props.stock.stock.historic_data.length-1].price.close}</p> : null}
+                  {props.stock ? <p>{props.stock.stock.historic_data[props.stock.stock.historic_data.length - 1].price.close}</p> : null}
                 </h5>
-                <h6>Total Amount : {price}</h6>
+                <h6>Total Amount : {amount}</h6>
               </div>
             </div>
           </form>
-          <ChildModal />
+          <ChildModal sellfunc={sell} id={id} stockid={props.stock.stock._id} amount={amount} />
         </Box>
       </Modal>
     </div>

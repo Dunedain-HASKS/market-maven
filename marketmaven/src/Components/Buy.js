@@ -28,12 +28,14 @@ function ChildModal(props) {
     setOpen(true);
   };
   const handleClose = () => {
+    props.buyfunc(props.id, props.amount, props.stockid);
+    
     setOpen(false);
   };
 
   return (
     <React.Fragment>
-      <Button onClick={handleOpen}>{props ? "Buy" : "Sell"}</Button>
+      <Button onClick={handleOpen}>{props.buyorsell ? "Buy" : "Sell"} </Button>
       <Modal
         hideBackdrop
         open={open}
@@ -42,7 +44,7 @@ function ChildModal(props) {
         aria-describedby="child-modal-description"
       >
         <Box sx={{ ...style, width: 200 }}>
-          <h2 id="child-modal-title">Are you sure ?</h2>
+          <h2 id="child-modal-title">Are you sure?</h2>
           <p id="child-modal-description">
             The action you are doing, won't be able to undo.{" "}
           </p>
@@ -72,14 +74,13 @@ export default function NestedModal(props) {
     })
       .then((response) => {
         if (response.status === 401) {
-          throw new Error("Insufficient Funds");
+          alert("Insufficient Balance");
         }
         return response.json();
       })
       .then((data) => {
-        //assume the data was added successfully
-        //modal closed
-        //handleClose()
+        console.log(data);
+        handleClose();
       })
       .catch((e) => {
         console.log(e);
@@ -102,8 +103,8 @@ export default function NestedModal(props) {
   };
   const [show, setShow] = React.useState(false);
 
-  const [qty, setQty] = React.useState();
-  const [price, setPrice] = React.useState(
+  const [qty, setQty] = React.useState(1);
+  const [amount, setAmount] = React.useState(
     props.stock.stock.historic_data[props.stock.stock.historic_data.length - 1]
       .price.close
   );
@@ -113,7 +114,7 @@ export default function NestedModal(props) {
       <Button
         onClick={handleOpen}
         variant="contained"
-        
+
         style={{ marginTop: "20px" }}
       >
         Buy
@@ -125,8 +126,8 @@ export default function NestedModal(props) {
         aria-describedby="parent-modal-description"
       >
         <Box sx={{ ...style, width: 400 }}>
-          {(buyorsell)? "Buy" : "Sell"}
-              {/* <Switch
+          {(buyorsell) ? "Buy" : "Sell"}
+          {/* <Switch
                 checked={checked}
                 onChange={buy(id, price, props.stock.stock._id)}
                 // onChange={handleClose}
@@ -138,7 +139,7 @@ export default function NestedModal(props) {
             onSubmit={(e) => {
               e.preventDefault();
               setQty("");
-              setPrice("");
+              setAmount("");
             }}
             id="buy"
             className="w-full max-w-sm"
@@ -170,31 +171,31 @@ export default function NestedModal(props) {
                   defaultValue={qty}
                   onChange={(e) => {
                     setQty(e.target.value);
-                    setPrice(
+                    setAmount(
                       e.target.value *
-                        props.stock.stock.historic_data[
-                          props.stock.stock.historic_data.length - 1
-                        ].price.close
+                      props.stock.stock.historic_data[
+                        props.stock.stock.historic_data.length - 1
+                      ].price.close
                     );
                   }}
                 />
                 <h5>
-                  Price :{" "}
+                  Price :
                   {props.stock ? (
-                    <p>
+                    <>
                       {
                         props.stock.stock.historic_data[
                           props.stock.stock.historic_data.length - 1
                         ].price.close
                       }
-                    </p>
+                    </>
                   ) : null}
                 </h5>
-                <h6>Total Amount : {price}</h6>
+                <h6>Total Amount : {amount}</h6>
               </div>
             </div>
           </form>
-          <ChildModal buyorsell={buyorsell} />
+          <ChildModal buyfunc={buy} buyorsell={buyorsell} id={id} stockid={props.stock.stock._id} amount={amount} />
         </Box>
       </Modal>
     </div>
