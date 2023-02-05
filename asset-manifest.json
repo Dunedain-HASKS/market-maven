@@ -1,10 +1,15 @@
 {
   "files": {
-    "main.css": "/market-maven/static/css/main.4fb58c9d.css",
-    "main.js": "/market-maven/static/js/main.4391e3d3.js",
+    "main.css": "/market-maven/static/css/main.e822755f.css",
+    "main.js": "/market-maven/static/js/main.203125d8.js",
+    "static/media/Harshal.JPG": "/market-maven/static/media/Harshal.99cd7bd5ad5fbe435d15.JPG",
     "static/media/Error404.png": "/market-maven/static/media/Error404.a2e6014226461f4f41a8.png",
+    "static/media/Shivang.png": "/market-maven/static/media/Shivang.a4ac1f734b5432c54ac4.png",
+    "static/media/Keyur.JPEG": "/market-maven/static/media/Keyur.71bfdc28c2f93adc3595.JPEG",
     "static/media/Starbucks.png": "/market-maven/static/media/Starbucks.f8e32f3cf680d2c245c2.png",
+    "static/media/Soham.JPG": "/market-maven/static/media/Soham.9730ad4e8b543c692ec6.JPG",
     "static/media/Costco.png": "/market-maven/static/media/Costco.6dc37cd428b8f4156e3a.png",
+    "static/media/Anuj.JPEG": "/market-maven/static/media/Anuj.eae35ad439171d38d4ff.JPEG",
     "static/media/intel.png": "/market-maven/static/media/intel.920e8c654fff9c7f5a37.png",
     "static/media/Broadcom_Logo.svg.png": "/market-maven/static/media/Broadcom_Logo.svg.0d0a713e2ed64d85119d.png",
     "static/media/comcast.svg.png": "/market-maven/static/media/comcast.svg.e1ccb3d3a74482a6225a.png",
@@ -65,11 +70,11 @@
     "static/media/roboto-greek-ext-300-normal.woff2": "/market-maven/static/media/roboto-greek-ext-300-normal.35b9d6be04b95f0f0530.woff2",
     "static/media/roboto-greek-ext-700-normal.woff2": "/market-maven/static/media/roboto-greek-ext-700-normal.bd9854c751441ccc1a70.woff2",
     "index.html": "/market-maven/index.html",
-    "main.4fb58c9d.css.map": "/market-maven/static/css/main.4fb58c9d.css.map",
-    "main.4391e3d3.js.map": "/market-maven/static/js/main.4391e3d3.js.map"
+    "main.e822755f.css.map": "/market-maven/static/css/main.e822755f.css.map",
+    "main.203125d8.js.map": "/market-maven/static/js/main.203125d8.js.map"
   },
   "entrypoints": [
-    "static/css/main.4fb58c9d.css",
-    "static/js/main.4391e3d3.js"
+    "static/css/main.e822755f.css",
+    "static/js/main.203125d8.js"
   ]
 }
